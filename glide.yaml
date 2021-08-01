@@ -48,7 +48,7 @@ import:
   version: a1f051bc3eba734da4772d60e2d677f47cf93ef4
 - package: github.com/golang/protobuf
   version: 4bd1920723d7b7c925de087aa32e2187708897f7
-- package: github.com/renstrom/dedent
+- package: github.com/lithammer/dedent
   version: ^1.0.0
 - package: github.com/russross/blackfriday
   version: v2.0.0

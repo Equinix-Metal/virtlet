@@ -24,7 +24,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/renstrom/dedent"
+	"github.com/lithammer/dedent"
 	"github.com/spf13/cobra"
 	"k8s.io/client-go/util/homedir"
 )
