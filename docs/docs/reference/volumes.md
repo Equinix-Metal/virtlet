@@ -39,7 +39,7 @@ VirtletCloudInitUserData: |
   - ["/dev/testpvc", "/mnt"]
 ```
 
-See also [block PV examples](https://github.com/Mirantis/virtlet/tree/master/examples#using-local-block-pvs).
+See also [block PV examples](https://github.com/Equinix/virtlet/tree/master/examples#using-local-block-pvs).
 
 ## Persistent root filesystem
 
@@ -81,7 +81,7 @@ because some cloud-init implementations only apply cloud-init network
 configuration once, but the IP address given to the VM may change if
 the persistent root filesystem is reused by another pod.
 
-See also [block PV examples](https://github.com/Mirantis/virtlet/tree/master/examples#using-the-persistent-root-filesystem).
+See also [block PV examples](https://github.com/Equinix/virtlet/tree/master/examples#using-the-persistent-root-filesystem).
 
 ## Consuming ConfigMaps and Secrets
 

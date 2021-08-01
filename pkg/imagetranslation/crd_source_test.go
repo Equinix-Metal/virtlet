@@ -25,8 +25,8 @@ import (
 	"github.com/ghodss/yaml"
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 
-	virtlet_v1 "github.com/Mirantis/virtlet/pkg/api/virtlet.k8s/v1"
-	"github.com/Mirantis/virtlet/pkg/client/clientset/versioned/fake"
+	virtlet_v1 "github.com/Equinix/virtlet/pkg/api/virtlet.k8s/v1"
+	"github.com/Equinix/virtlet/pkg/client/clientset/versioned/fake"
 )
 
 func TestCRDConfigSource(t *testing.T) {

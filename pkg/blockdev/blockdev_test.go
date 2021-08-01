@@ -23,10 +23,10 @@ import (
 	"reflect"
 	"testing"
 
-	fake "github.com/Mirantis/virtlet/pkg/blockdev/fake"
-	"github.com/Mirantis/virtlet/pkg/utils"
-	fakeutils "github.com/Mirantis/virtlet/pkg/utils/fake"
-	testutils "github.com/Mirantis/virtlet/pkg/utils/testing"
+	fake "github.com/Equinix/virtlet/pkg/blockdev/fake"
+	"github.com/Equinix/virtlet/pkg/utils"
+	fakeutils "github.com/Equinix/virtlet/pkg/utils/fake"
+	testutils "github.com/Equinix/virtlet/pkg/utils/testing"
 )
 
 func TestDevHeader(t *testing.T) {

@@ -23,7 +23,7 @@ import (
 	"strconv"
 	"syscall"
 
-	"github.com/Mirantis/virtlet/pkg/metadata"
+	"github.com/Equinix/virtlet/pkg/metadata"
 
 	"github.com/golang/glog"
 	knet "k8s.io/apimachinery/pkg/util/net"

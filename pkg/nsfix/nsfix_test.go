@@ -30,8 +30,8 @@ import (
 
 	"github.com/golang/glog"
 
-	"github.com/Mirantis/virtlet/pkg/utils"
-	testutils "github.com/Mirantis/virtlet/pkg/utils/testing"
+	"github.com/Equinix/virtlet/pkg/utils"
+	testutils "github.com/Equinix/virtlet/pkg/utils/testing"
 )
 
 type nsFixTestArg struct {

@@ -23,14 +23,14 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/Mirantis/virtlet/tests/gm"
+	"github.com/Equinix/virtlet/tests/gm"
 	digest "github.com/opencontainers/go-digest"
 
-	fakeblockdev "github.com/Mirantis/virtlet/pkg/blockdev/fake"
-	"github.com/Mirantis/virtlet/pkg/metadata/types"
-	fakeutils "github.com/Mirantis/virtlet/pkg/utils/fake"
-	testutils "github.com/Mirantis/virtlet/pkg/utils/testing"
-	fakevirt "github.com/Mirantis/virtlet/pkg/virt/fake"
+	fakeblockdev "github.com/Equinix/virtlet/pkg/blockdev/fake"
+	"github.com/Equinix/virtlet/pkg/metadata/types"
+	fakeutils "github.com/Equinix/virtlet/pkg/utils/fake"
+	testutils "github.com/Equinix/virtlet/pkg/utils/testing"
+	fakevirt "github.com/Equinix/virtlet/pkg/virt/fake"
 )
 
 func TestPersistentRootVolume(t *testing.T) {

@@ -43,14 +43,14 @@ $ ../../build/cmd.sh gotest
                    {
 FAIL
 exit status 1
-FAIL    github.com/Mirantis/virtlet/pkg/libvirttools    0.466s
+FAIL    github.com/Equinix/virtlet/pkg/libvirttools    0.466s
 
 $ # accept the changes by staging them
 $ git add TestDomainDefinitions__cloud-init_with_user_data.json
 
 $ ../../build/cmd.sh gotest
 PASS
-ok      github.com/Mirantis/virtlet/pkg/libvirttools    0.456s
+ok      github.com/Equinix/virtlet/pkg/libvirttools    0.456s
 ```
 
 # Running tests on Mac OS X
@@ -68,10 +68,10 @@ $ sudo ln -s `which mkisofs` /usr/local/bin/genisoimage
 Some of the tests such as integration/e2e and network related tests
 only run on Linux. That being said, some of the tests do run on Mac OS
 X. First you need to make sure Virtlet is checked out as
-`$GOPATH/src/github.com/Mirantis/virtlet` and install the glide deps:
+`$GOPATH/src/github.com/Equinix/virtlet` and install the glide deps:
 
 ```
-$ cd "$GOPATH/src/github.com/Mirantis/virtlet"
+$ cd "$GOPATH/src/github.com/Equinix/virtlet"
 $ glide install --strip-vendor
 ```
 

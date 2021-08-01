@@ -22,7 +22,7 @@ For example:
         policy: disable
 ```
 
-See [cpuSetting](https://github.com/Mirantis/virtlet/blob/master/examples/ubuntu-vm-with-libvirt-cpusetting.yaml) for a full example.
+See [cpuSetting](https://github.com/Equinix/virtlet/blob/master/examples/ubuntu-vm-with-libvirt-cpusetting.yaml) for a full example.
 
 ## Resource monitoring on the node
 As Kubelet uses [cAdvisor](https://github.com/google/cadvisor) to collect
@@ -93,7 +93,7 @@ always up to cluster administrators how to set up number vCPUs per VMs.
 ### Virtlet CPU resources management
 1. By default, all VMs are created with 1 vCPU.
    To change vCPU number for VM-Pod you have to add annotation
-   `VirtletVCPUCount` with desired number, see [examples/cirros-vm.yaml](https://github.com/Mirantis/virtlet/blob/master/examples/cirros-vm.yaml).
+   `VirtletVCPUCount` with desired number, see [examples/cirros-vm.yaml](https://github.com/Equinix/virtlet/blob/master/examples/cirros-vm.yaml).
 2. Due to p.2 in **"Libvirt CPU Allocation"** Virtlet spreads the assigned CPU
    resource limit equally among VM's vCPU threads.
 3. According to p.3 in **"Libvirt CPU Allocation"** Virtlet must set limits
@@ -123,7 +123,7 @@ For more details check [Overcommitting with KVM](https://access.redhat.com/docum
 
 ### Virtlet Memory resources management
 1. By default, each VM is assigned 1GB of RAM.  To set other value you need
-set resource memory limit for container, see [examples/cirros-vm.yaml](https://github.com/Mirantis/virtlet/blob/master/examples/cirros-vm.yaml).
+set resource memory limit for container, see [examples/cirros-vm.yaml](https://github.com/Equinix/virtlet/blob/master/examples/cirros-vm.yaml).
 1. Virtlet generates domain XML with memoryBacking=locked setting to prevent
    swapping out domain's pages.
 

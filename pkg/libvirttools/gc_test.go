@@ -25,11 +25,11 @@ import (
 
 	libvirtxml "github.com/libvirt/libvirt-go-xml"
 
-	blockdev "github.com/Mirantis/virtlet/pkg/blockdev"
-	fakeblockdev "github.com/Mirantis/virtlet/pkg/blockdev/fake"
-	fakeutils "github.com/Mirantis/virtlet/pkg/utils/fake"
-	testutils "github.com/Mirantis/virtlet/pkg/utils/testing"
-	"github.com/Mirantis/virtlet/tests/gm"
+	blockdev "github.com/Equinix/virtlet/pkg/blockdev"
+	fakeblockdev "github.com/Equinix/virtlet/pkg/blockdev/fake"
+	fakeutils "github.com/Equinix/virtlet/pkg/utils/fake"
+	testutils "github.com/Equinix/virtlet/pkg/utils/testing"
+	"github.com/Equinix/virtlet/tests/gm"
 )
 
 var (

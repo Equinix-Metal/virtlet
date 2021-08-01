@@ -31,7 +31,7 @@ import (
 	"github.com/golang/glog"
 	"go.universe.tf/netboot/dhcp4"
 
-	"github.com/Mirantis/virtlet/pkg/network"
+	"github.com/Equinix/virtlet/pkg/network"
 )
 
 const (

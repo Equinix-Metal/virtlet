@@ -3,7 +3,7 @@ package version
 import (
 	"testing"
 
-	"github.com/Mirantis/virtlet/tests/gm"
+	"github.com/Equinix/virtlet/tests/gm"
 )
 
 func withNodeName(name string, v Info) Info {

@@ -29,11 +29,11 @@ import (
 
 	"google.golang.org/grpc"
 
-	"github.com/Mirantis/virtlet/pkg/api/virtlet.k8s/v1"
-	"github.com/Mirantis/virtlet/pkg/config"
-	"github.com/Mirantis/virtlet/pkg/diag"
-	"github.com/Mirantis/virtlet/pkg/manager"
-	"github.com/Mirantis/virtlet/pkg/tapmanager"
+	"github.com/Equinix/virtlet/pkg/api/virtlet.k8s/v1"
+	"github.com/Equinix/virtlet/pkg/config"
+	"github.com/Equinix/virtlet/pkg/diag"
+	"github.com/Equinix/virtlet/pkg/manager"
+	"github.com/Equinix/virtlet/pkg/tapmanager"
 )
 
 const (

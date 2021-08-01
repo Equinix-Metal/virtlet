@@ -22,11 +22,11 @@ import (
 
 	kubeapi "k8s.io/kubernetes/pkg/kubelet/apis/cri/runtime/v1alpha2"
 
-	"github.com/Mirantis/virtlet/pkg/metadata/fake"
-	"github.com/Mirantis/virtlet/pkg/metadata/types"
-	"github.com/Mirantis/virtlet/pkg/network"
-	"github.com/Mirantis/virtlet/tests/criapi"
-	"github.com/Mirantis/virtlet/tests/gm"
+	"github.com/Equinix/virtlet/pkg/metadata/fake"
+	"github.com/Equinix/virtlet/pkg/metadata/types"
+	"github.com/Equinix/virtlet/pkg/network"
+	"github.com/Equinix/virtlet/tests/criapi"
+	"github.com/Equinix/virtlet/tests/gm"
 )
 
 func TestConversions(t *testing.T) {

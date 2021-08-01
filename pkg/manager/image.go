@@ -21,7 +21,7 @@ import (
 	"golang.org/x/net/context"
 	kubeapi "k8s.io/kubernetes/pkg/kubelet/apis/cri/runtime/v1alpha2"
 
-	"github.com/Mirantis/virtlet/pkg/image"
+	"github.com/Equinix/virtlet/pkg/image"
 )
 
 // VirtletImageService handles CRI image service calls.

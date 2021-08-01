@@ -21,8 +21,8 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/Mirantis/virtlet/pkg/utils"
-	testutils "github.com/Mirantis/virtlet/pkg/utils/testing"
+	"github.com/Equinix/virtlet/pkg/utils"
+	testutils "github.com/Equinix/virtlet/pkg/utils/testing"
 )
 
 // CmdSpec specifies a command for the fake Commander

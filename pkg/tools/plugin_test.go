@@ -19,7 +19,7 @@ package tools
 import (
 	"testing"
 
-	"github.com/Mirantis/virtlet/tests/gm"
+	"github.com/Equinix/virtlet/tests/gm"
 )
 
 func TestPlugin(t *testing.T) {

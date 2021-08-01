@@ -22,7 +22,7 @@ import (
 
 	"k8s.io/client-go/tools/clientcmd"
 
-	virtletclient "github.com/Mirantis/virtlet/pkg/client/clientset/versioned"
+	virtletclient "github.com/Equinix/virtlet/pkg/client/clientset/versioned"
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 

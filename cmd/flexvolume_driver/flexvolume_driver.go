@@ -21,9 +21,9 @@ import (
 	"os"
 	"time"
 
-	"github.com/Mirantis/virtlet/pkg/flexvolume"
-	"github.com/Mirantis/virtlet/pkg/fs"
-	"github.com/Mirantis/virtlet/pkg/utils"
+	"github.com/Equinix/virtlet/pkg/flexvolume"
+	"github.com/Equinix/virtlet/pkg/fs"
+	"github.com/Equinix/virtlet/pkg/utils"
 )
 
 func main() {

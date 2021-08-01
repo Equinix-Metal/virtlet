@@ -15,8 +15,8 @@ KDC_BASE_LOCATION="${KDC_BASE_LOCATION:-https://github.com/kubernetes-sigs/kubea
 kdc_script="dind-cluster-v${KUBE_VERSION}.sh"
 kdc_url="${KDC_BASE_LOCATION}/${KDC_VERSION}/${kdc_script}"
 kubectl="${HOME}/.kubeadm-dind-cluster/kubectl"
-BASE_LOCATION="${BASE_LOCATION:-https://raw.githubusercontent.com/Mirantis/virtlet/master/}"
-RELEASE_LOCATION="${RELEASE_LOCATION:-https://github.com/Mirantis/virtlet/releases/download/}"
+BASE_LOCATION="${BASE_LOCATION:-https://raw.githubusercontent.com/Equinix/virtlet/master/}"
+RELEASE_LOCATION="${RELEASE_LOCATION:-https://github.com/Equinix/virtlet/releases/download/}"
 VIRTLET_DEMO_RELEASE="${VIRTLET_DEMO_RELEASE:-}"
 VIRTLET_DEMO_BRANCH="${VIRTLET_DEMO_BRANCH:-}"
 VIRTLET_ON_MASTER="${VIRTLET_ON_MASTER:-}"
@@ -26,7 +26,7 @@ MULTI_CNI="${MULTI_CNI:-}"
 DEMO_LOG_LEVEL="${DEMO_LOG_LEVEL:-}"
 DIND_CRI="${DIND_CRI:-containerd}"
 # Convenience setting for local testing:
-# BASE_LOCATION="${HOME}/work/kubernetes/src/github.com/Mirantis/virtlet"
+# BASE_LOCATION="${HOME}/work/kubernetes/src/github.com/Equinix/virtlet"
 cirros_key="demo-cirros-private-key"
 # just initialize it
 declare virtlet_release
@@ -127,7 +127,7 @@ function demo::get-cirros-ssh-keys {
     return 0
   fi
   demo::step "Will download ${cirros_key} into current directory"
-  wget -O ${cirros_key} "https://raw.githubusercontent.com/Mirantis/virtlet/${virtlet_release}/examples/vmkey"
+  wget -O ${cirros_key} "https://raw.githubusercontent.com/Equinix/virtlet/${virtlet_release}/examples/vmkey"
   chmod 600 ${cirros_key}
 }
 
@@ -187,8 +187,8 @@ function demo::fix-mounts {
 
 function demo::inject-local-image {
   local virtlet_node="${1}"
-  demo::step "Copying local mirantis/virtlet image into ${virtlet_node} container"
-  docker save mirantis/virtlet |
+  demo::step "Copying local Equinix/virtlet image into ${virtlet_node} container"
+  docker save Equinix/virtlet |
     if [[ ${DIND_CRI} = containerd ]]; then
       docker exec -i "${virtlet_node}" ctr -n k8s.io images import -
     else
@@ -308,13 +308,13 @@ function demo::vm-ready {
 function demo::kvm-ok {
   demo::step "Checking for KVM support..."
   # The check is done inside the node container because it has proper /lib/modules
-  # from the docker host. Also, it'll have to use mirantis/virtlet image
+  # from the docker host. Also, it'll have to use Equinix/virtlet image
   # later anyway.
   if [[ ${using_linuxkit} ]]; then
     return 1
   fi
   # use kube-master node as all of the DIND nodes in the cluster are similar
-  if ! docker exec kube-master docker run --privileged --rm -v /lib/modules:/lib/modules "mirantis/virtlet:${virtlet_docker_tag}" kvm-ok; then
+  if ! docker exec kube-master docker run --privileged --rm -v /lib/modules:/lib/modules "Equinix/virtlet:${virtlet_docker_tag}" kvm-ok; then
     return 1
   fi
 }
@@ -325,7 +325,7 @@ function demo::get-correct-virtlet-release {
   local  __resultvar=$1
   local jq_filter=".[0].tag_name"
   local last_release
-  last_release=$(curl --silent https://api.github.com/repos/Mirantis/virtlet/releases | docker exec -i kube-master jq "${jq_filter}" | sed 's/^\"\(.*\)\"$/\1/')
+  last_release=$(curl --silent https://api.github.com/repos/Equinix/virtlet/releases | docker exec -i kube-master jq "${jq_filter}" | sed 's/^\"\(.*\)\"$/\1/')
   if [[ $__resultvar ]]; then
     eval $__resultvar="'$last_release'"
   else
@@ -342,7 +342,7 @@ function demo::start-virtlet {
     else
       virtlet_release="${VIRTLET_DEMO_BRANCH}"
       virtlet_docker_tag=$(echo $VIRTLET_DEMO_BRANCH | sed -e "s/\//_/g")
-      BASE_LOCATION="https://raw.githubusercontent.com/Mirantis/virtlet/${virtlet_release}/"
+      BASE_LOCATION="https://raw.githubusercontent.com/Equinix/virtlet/${virtlet_release}/"
     fi
   else
     if [[ ${VIRTLET_DEMO_RELEASE} ]]; then
@@ -352,7 +352,7 @@ function demo::start-virtlet {
     fi
     # set correct urls and names
     virtlet_docker_tag="${virtlet_release}"
-    BASE_LOCATION="https://raw.githubusercontent.com/Mirantis/virtlet/${virtlet_release}/"
+    BASE_LOCATION="https://raw.githubusercontent.com/Equinix/virtlet/${virtlet_release}/"
   fi
   echo "Will run demo using Virtlet:${virtlet_release} for demo and ${virtlet_docker_tag} as docker tag"
   if demo::kvm-ok; then
@@ -380,7 +380,7 @@ function demo::start-virtlet {
 
   if [[ ${DEMO_LOG_LEVEL} ]]; then
       demo::step "Deploying Virtlet CRDs"
-      docker run --rm "mirantis/virtlet:${virtlet_docker_tag}" virtletctl gen --crd |
+      docker run --rm "Equinix/virtlet:${virtlet_docker_tag}" virtletctl gen --crd |
           "${kubectl}" apply -f -
       "${kubectl}" apply -f - <<EOF
 ---
@@ -395,7 +395,7 @@ spec:
 EOF
   fi
   demo::step "Deploying Virtlet DaemonSet with docker tag ${virtlet_docker_tag}"
-  docker run --rm "mirantis/virtlet:${virtlet_docker_tag}" virtletctl gen --tag "${virtlet_docker_tag}" |
+  docker run --rm "Equinix/virtlet:${virtlet_docker_tag}" virtletctl gen --tag "${virtlet_docker_tag}" |
       "${kubectl}" apply -f -
   demo::wait-for "Virtlet DaemonSet" demo::pods-ready runtime=virtlet
 }
@@ -425,7 +425,7 @@ Use 'curl http://nginx.default.svc.cluster.local' from VM console to test
 cluster networking.
 
 To clean up the cluster, use './dind-cluster-v${KUBE_VERSION}.sh clean'
-[1] https://github.com/Mirantis/virtlet
+[1] https://github.com/Equinix/virtlet
 [2] https://github.com/kubernetes-sigs/kubeadm-dind-cluster
 EOF
   exit 0

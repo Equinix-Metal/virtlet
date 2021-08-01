@@ -1,6 +1,6 @@
 # Volumes
 
-[Volumes Documentation](https://github.com/Mirantis/virtlet/blob/master/docs/docs/reference/volumes.md)
+[Volumes Documentation](https://github.com/Equinix/virtlet/blob/master/docs/docs/reference/volumes.md)
 
 Virtlet supports Kubernetes Volumes in a several ways:
 

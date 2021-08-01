@@ -22,8 +22,8 @@ import (
 
 	. "github.com/onsi/gomega"
 
-	"github.com/Mirantis/virtlet/tests/e2e/framework"
-	. "github.com/Mirantis/virtlet/tests/e2e/ginkgo-ext"
+	"github.com/Equinix/virtlet/tests/e2e/framework"
+	. "github.com/Equinix/virtlet/tests/e2e/ginkgo-ext"
 	"k8s.io/api/core/v1"
 )
 

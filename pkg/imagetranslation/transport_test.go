@@ -28,9 +28,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/Mirantis/virtlet/pkg/api/virtlet.k8s/v1"
-	"github.com/Mirantis/virtlet/pkg/image"
-	testutils "github.com/Mirantis/virtlet/pkg/utils/testing"
+	"github.com/Equinix/virtlet/pkg/api/virtlet.k8s/v1"
+	"github.com/Equinix/virtlet/pkg/image"
+	testutils "github.com/Equinix/virtlet/pkg/utils/testing"
 )
 
 func translate(config v1.ImageTranslation, name string, server *httptest.Server) image.Endpoint {

@@ -1,7 +1,7 @@
 # build/cmd.sh
 
 `build/cmd.sh` script helps automating usage of docker build
-container using [Dockerfile.build](https://github.com/Mirantis/virtlet/blob/master/images/Dockerfile.build).
+container using [Dockerfile.build](https://github.com/Equinix/virtlet/blob/master/images/Dockerfile.build).
 
 ## Script usage
 
@@ -40,7 +40,7 @@ inside the container but you can override the path by setting
 ### build
 
 Performs a full build of Virtlet. Also builds
-`mirantis/virtlet:latest` image.
+`Equinix/virtlet:latest` image.
 
 ### test
 
@@ -75,7 +75,7 @@ Starts Virtlet on kube-node-1 of [kubeadm-dind-cluster](https://github.com/kuber
 kube-master if `VIRTLET_ON_MASTER` environment variable is set to a
 non-empty value). You need to do `dind-cluster...sh up` and
 `build/cmd.sh copy-dind` to be able to use this command.
-This command copies locally-built `mirantis/virtlet` image to
+This command copies locally-built `Equinix/virtlet` image to
 the DIND node that will run Virtlet if it doesn't exist there
 or if `FORCE_UPDATE_IMAGE` is set to a non-empty value.
 This command requires `kubectl`.
@@ -105,7 +105,7 @@ the binaries in local `_output` directory.
 
 Updates generated binary assets. Currently needed if you edit files
 under
-[deploy/data](https://github.com/Mirantis/virtlet/tree/master/deploy/data)
+[deploy/data](https://github.com/Equinix/virtlet/tree/master/deploy/data)
 directory.
 
 ### update-generated-docs

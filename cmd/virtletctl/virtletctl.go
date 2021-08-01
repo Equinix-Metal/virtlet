@@ -20,10 +20,10 @@ import (
 	"flag"
 	"os"
 
-	"github.com/renstrom/dedent"
+	"github.com/lithammer/dedent"
 	"github.com/spf13/cobra"
 
-	"github.com/Mirantis/virtlet/pkg/tools"
+	"github.com/Equinix/virtlet/pkg/tools"
 )
 
 func newRootCmd() *cobra.Command {

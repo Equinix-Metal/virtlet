@@ -21,8 +21,8 @@ import (
 
 	libvirtxml "github.com/libvirt/libvirt-go-xml"
 
-	"github.com/Mirantis/virtlet/pkg/diag"
-	"github.com/Mirantis/virtlet/pkg/virt"
+	"github.com/Equinix/virtlet/pkg/diag"
+	"github.com/Equinix/virtlet/pkg/virt"
 )
 
 // LibvirtDiagSource dumps libvirt domains, storage pools and storage

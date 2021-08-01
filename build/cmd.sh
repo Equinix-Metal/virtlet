@@ -5,7 +5,7 @@ set -o pipefail
 set -o errtrace
 
 CRIPROXY_DEB_URL="${CRIPROXY_DEB_URL:-https://github.com/Mirantis/criproxy/releases/download/v0.14.0/criproxy-nodeps_0.14.0_amd64.deb}"
-VIRTLET_IMAGE="${VIRTLET_IMAGE:-mirantis/virtlet}"
+VIRTLET_IMAGE="${VIRTLET_IMAGE:-equinix/virtlet}"
 VIRTLET_SKIP_RSYNC="${VIRTLET_SKIP_RSYNC:-}"
 VIRTLET_SKIP_VENDOR="${VIRTLET_SKIP_VENDOR:-false}"
 VIRTLET_RSYNC_PORT="${VIRTLET_RSYNC_PORT:-18730}"
@@ -21,8 +21,8 @@ MKDOCS_SERVE_ADDRESS="${MKDOCS_SERVE_ADDRESS:-localhost:8042}"
 
 # Note that project_dir must not end with slash
 project_dir="$(cd "$(dirname "${BASH_SOURCE}")/.." && pwd)"
-virtlet_image="mirantis/virtlet"
-remote_project_dir="/go/src/github.com/Mirantis/virtlet"
+virtlet_image="equinix/virtlet"
+remote_project_dir="/go/src/github.com/Equinix/virtlet"
 build_name="virtlet_build"
 tmp_container_name="${build_name}-$(openssl rand -hex 16)"
 build_image=${build_name}:latest
@@ -51,13 +51,26 @@ bindata_out="pkg/tools/bindata.go"
 bindata_dir="deploy/data"
 bindata_pkg="tools"
 ldflags=()
-go_package=github.com/Mirantis/virtlet
+go_package=github.com/Equinix/virtlet
 
 function image_tags_filter {
     local tag="${1}"
     local prefix=".items[0].spec.template.spec."
-    local suffix="|=map(.image=\"mirantis/virtlet:${tag}\")"
+    local suffix="|=map(.image=\"equinix/virtlet:${tag}\")"
     echo -n "${prefix}containers${suffix}|${prefix}initContainers${suffix}"
+}
+
+function get_version() {
+	inside_git=$(git rev-parse --is-inside-work-tree 2>&1 >/dev/null; echo $?)
+	if [ $inside_git != 0 ]; then
+    echo "Not in GIT repo and VERSION variable is not set."
+    version='latest'
+	else
+    VERSION_HASH=$(git show --summary | head -1 | awk '{print substr($2,0,8)}')
+    version="${VERSION_HASH}"
+  fi
+  echo "$version" >"${project_dir}/_output/version"
+  return 0
 }
 
 # from build/common.sh in k8s
@@ -83,48 +96,32 @@ function image_exists {
     docker history -q "${name}" >& /dev/null || return 1
 }
 
-function update_dockerfile_from {
-    local dockerfile="${1}"
-    local from_dockerfile="${2}"
-    local dest_var="${3:-}"
-    local cur_from="$(awk '/^FROM /{print $2}' "${dockerfile}")"
-    if [[ ${cur_from} =~ (^.*:.*-)([0-9a-f]) ]]; then
-        new_from="${BASH_REMATCH[1]}$(md5sum ${from_dockerfile} | sed 's/ .*//')"
-        if [[ ${new_from} != ${cur_from} ]]; then
-            sed -i "s@^FROM .*@FROM ${new_from}@" "${dockerfile}"
-        fi
-        if [[ ${dest_var} ]]; then
-            eval "${dest_var}=${new_from}"
-        fi
-    else
-        echo >&2 "*** ERROR: can't update FROM in ${dockerfile}: unexpected value: '${cur_from}'"
-        return 1
-    fi
-}
-
 function ensure_build_image {
-    update_dockerfile_from "${project_dir}/images/Dockerfile.build-base" "${project_dir}/images/Dockerfile.virtlet-base" virtlet_base_image
-    update_dockerfile_from "${project_dir}/images/Dockerfile.build" "${project_dir}/images/Dockerfile.build-base" build_base_image
-    update_dockerfile_from "${project_dir}/images/Dockerfile.virtlet" "${project_dir}/images/Dockerfile.virtlet-base"
-
-    if ! image_exists "${build_image}"; then
-        if ! image_exists "${build_base_image}"; then
-            if ! image_exists "${virtlet_base_image}"; then
-                echo >&2 "Trying to pull the base image ${virtlet_base_image}..."
-                if ! docker pull "${virtlet_base_image}"; then
-                    docker build -t "${virtlet_base_image}" -f "${project_dir}/images/Dockerfile.virtlet-base" "${project_dir}/images"
-                fi
-            fi
-            echo >&2 "Trying to pull the build base image ${build_base_image}..."
-            if ! docker pull "${build_base_image}"; then
-                docker build -t "${build_base_image}" \
-                       --label virtlet_image=build-base \
-                       -f "${project_dir}/images/Dockerfile.build-base" "${project_dir}/images"
-            fi
-        fi
-        tar -C "${project_dir}/images" -c image_skel/ qemu-build.conf Dockerfile.build |
-            docker build -t "${build_image}" -f Dockerfile.build -
+    mkdir -p "${project_dir}/_output"
+    get_version
+    build_tag="$(cat "${project_dir}/_output/version")"
+    docker login ryugu-psie-docker-dev-local.jfrog.io
+    virtlet_base_image="ryugu-psie-docker-dev-local.jfrog.io/equinix/virtlet-base:${build_tag}"
+    build_base_image="ryugu-psie-docker-dev-local.jfrog.io/equinix/virtlet-build-base:${build_tag}"
+    echo >&2 "Trying to pull the base image ${virtlet_base_image}..."
+    if ! docker pull "${virtlet_base_image}"; then
+        docker build -t "${virtlet_base_image}" \
+               -f "${project_dir}/images/Dockerfile.virtlet-base" \
+               "${project_dir}/images"
+        docker push "${virtlet_base_image}"
     fi
+    echo >&2 "Trying to pull the build base image ${build_base_image}..."
+    if ! docker pull "${build_base_image}"; then
+        docker build -t "${build_base_image}" \
+               --label virtlet_image=build-base \
+               --build-arg BASE_TAG=${build_tag} \
+               -f "${project_dir}/images/Dockerfile.build-base" "${project_dir}/images"
+        docker push "${build_base_image}"
+    fi
+    tar -C "${project_dir}/images" -c image_skel/ qemu-build.conf Dockerfile.build |
+        docker build -t "${build_image}" --build-arg BUILD_TAG=${build_tag} \
+        -f Dockerfile.build -
+    docker push "${build_image}"
 }
 
 function get_rsync_addr {
@@ -395,8 +392,11 @@ function gobuild {
 
 function build_image_internal {
     build_internal
+    build_tag="$(cat "${project_dir}/_output/version")"
     tar -c _output -C "${project_dir}/images" image_skel/ Dockerfile.virtlet |
-        docker build -t "${virtlet_image}" -f Dockerfile.virtlet -
+        docker build -t "${virtlet_image}" --build-arg VIRLET_BASE_TAG=build_tag \
+          -f Dockerfile.virtlet -
+    docker push "${virtlet_image}"
 }
 
 function install_vendor_internal {
@@ -466,6 +466,7 @@ function build_internal {
     go build -i -o "${project_dir}/_output/flexvolume_driver" ./cmd/flexvolume_driver
     go test -i -c -o "${project_dir}/_output/virtlet-e2e-tests" ./tests/e2e
     go build -i -o "${project_dir}/_output/virtlet-longevity-tests" -ldflags "${ldflags}" ./cmd/longevity
+    get_version
 }
 
 function release_description {
@@ -538,13 +539,13 @@ function update_generated_docs_internal {
 function update_generated_internal {
   install_vendor_internal
   vendor/k8s.io/code-generator/generate-groups.sh all \
-    github.com/Mirantis/virtlet/pkg/client github.com/Mirantis/virtlet/pkg/api \
+    github.com/Equinix/virtlet/pkg/client github.com/Equinix/virtlet/pkg/api \
     virtlet.k8s:v1 \
     --go-header-file "build/custom-boilerplate.go.txt"
   # fix import url case issues
   find pkg/client \
        -name '*.go' \
-       -exec sed -i 's@github\.com/mirantis/virtlet@github\.com/Mirantis/virtlet@g' \
+       -exec sed -i 's@github\.com/Equinix/virtlet@github\.com/Equinix/virtlet@g' \
        '{}' \;
 }
 

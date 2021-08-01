@@ -1,8 +1,6 @@
-# TODO: generate this tag. unfortunately can't use ARG:
-# https://docs.docker.com/engine/reference/builder/#understand-how-arg-and-from-interact
-# (but add a note about it here for the future)
-FROM mirantis/virtlet-base:v1-6348ee2277c565d3895260bccb5ada96
-MAINTAINER Ivan Shvedunov <ishvedunov@mirantis.com>
+ARG BASE_TAG
+FROM ryugu-psie-docker-dev-local.jfrog.io/equinix/virtlet-base:${BASE_TAG}
+MAINTAINER Brandon Feng <bfeng@equinix.com>
 
 LABEL virtlet.image="build-base"
 
@@ -52,7 +50,7 @@ RUN curl -fsSL "$GOLANG_DOWNLOAD_URL" -o golang.tar.gz \
 	&& rm golang.tar.gz
 
 ENV GOPATH /go
-ENV PATH /go/src/github.com/Mirantis/virtlet/_output:$GOPATH/bin:/usr/local/go/bin:$PATH
+ENV PATH /go/src/github.com/Equinix/virtlet/_output:$GOPATH/bin:/usr/local/go/bin:$PATH
 
 RUN mkdir -p "$GOPATH/src" "$GOPATH/bin" && chmod -R 777 "$GOPATH"
 WORKDIR $GOPATH
@@ -72,12 +70,11 @@ RUN mkdir -p ~/.ssh && \
     mkdir -p /var/lib/virtlet/volumes /opt/cni/bin && \
     curl -L https://github.com/containernetworking/cni/releases/download/v0.3.0/cni-v0.3.0.tgz | \
       tar zxC /opt/cni/bin && \
-    ln -s /go/src/github.com/Mirantis/virtlet/_output/vmwrapper /vmwrapper
+    ln -s /go/src/github.com/Equinix/virtlet/_output/vmwrapper /vmwrapper
 
 # Download cirros image
 RUN mkdir -p /images && \
-    curl -L https://github.com/Mirantis/virtlet/releases/download/v0.8.2/cirros.img -o /images/cirros.img && \
-    echo "${CIRROS_SHA256}  /images/cirros.img" | sha256sum -c -
+    curl -L http://download.cirros-cloud.net/0.5.2/cirros-0.5.2-x86_64-disk.img -o /images/cirros.img
 
 # Install Go tooling
 RUN go get github.com/aktau/github-release && \

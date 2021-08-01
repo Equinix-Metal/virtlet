@@ -29,13 +29,13 @@ import (
 	"k8s.io/apimachinery/pkg/fields"
 	kubetypes "k8s.io/kubernetes/pkg/kubelet/types"
 
-	vconfig "github.com/Mirantis/virtlet/pkg/config"
-	"github.com/Mirantis/virtlet/pkg/fs"
-	"github.com/Mirantis/virtlet/pkg/metadata"
-	"github.com/Mirantis/virtlet/pkg/metadata/types"
-	"github.com/Mirantis/virtlet/pkg/network"
-	"github.com/Mirantis/virtlet/pkg/utils"
-	"github.com/Mirantis/virtlet/pkg/virt"
+	vconfig "github.com/Equinix/virtlet/pkg/config"
+	"github.com/Equinix/virtlet/pkg/fs"
+	"github.com/Equinix/virtlet/pkg/metadata"
+	"github.com/Equinix/virtlet/pkg/metadata/types"
+	"github.com/Equinix/virtlet/pkg/network"
+	"github.com/Equinix/virtlet/pkg/utils"
+	"github.com/Equinix/virtlet/pkg/virt"
 )
 
 const (

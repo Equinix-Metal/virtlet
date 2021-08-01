@@ -26,7 +26,7 @@ import (
 	"testing"
 	"time"
 
-	testutils "github.com/Mirantis/virtlet/pkg/utils/testing"
+	testutils "github.com/Equinix/virtlet/pkg/utils/testing"
 )
 
 // Note that more of downloader tests are in pkg/imagetranslation/transport_test.go

@@ -19,7 +19,7 @@ package config
 import (
 	"testing"
 
-	"github.com/Mirantis/virtlet/tests/gm"
+	"github.com/Equinix/virtlet/tests/gm"
 )
 
 func TestGetCRDDefinitions(t *testing.T) {

@@ -24,8 +24,8 @@ import (
 
 	"github.com/ghodss/yaml"
 
-	"github.com/Mirantis/virtlet/pkg/diag"
-	"github.com/Mirantis/virtlet/pkg/metadata/types"
+	"github.com/Equinix/virtlet/pkg/diag"
+	"github.com/Equinix/virtlet/pkg/metadata/types"
 )
 
 const (

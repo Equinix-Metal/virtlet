@@ -60,7 +60,7 @@ restore_images_and_vendor: &restore_images_and_vendor
     if [[ -f _output/vendor.tar ]]; then
       build/portforward.sh 18730&
       build/cmd.sh start-build-container
-      docker exec -i virtlet-build tar -C /go/src/github.com/Mirantis/virtlet -xv <_output/vendor.tar
+      docker exec -i virtlet-build tar -C /go/src/github.com/Equinix/virtlet -xv <_output/vendor.tar
     fi
 
 extract_binaries_from_the_image: &extract_binaries_from_the_image
@@ -70,7 +70,7 @@ extract_binaries_from_the_image: &extract_binaries_from_the_image
       exit 0
     fi
     tag="$(echo "${CIRCLE_TAG:-${CIRCLE_BRANCH}}"|tr / _)"
-    image="mirantis/virtlet:${tag}"
+    image="Equinix/virtlet:${tag}"
     echo "Extracting binaries from ${image}"
     mkdir -p _output/
     docker run "${image}" tar -C / -c vmwrapper virtlet-e2e-tests virtletctl | tar -C _output/ -xv
@@ -116,8 +116,8 @@ push_images: &push_images
         tag="$(echo "${CIRCLE_TAG:-${CIRCLE_BRANCH}}"|tr / _)"
         # we want to push 'latest' image for the master branch
         if [[ ${tag} != master ]]; then
-          docker tag mirantis/virtlet:latest "mirantis/virtlet:${tag}"
-          docker rmi mirantis/virtlet:latest
+          docker tag Equinix/virtlet:latest "Equinix/virtlet:${tag}"
+          docker rmi Equinix/virtlet:latest
         fi
   - run:
       name: Push the images
@@ -129,7 +129,7 @@ push_images: &push_images
         docker login -u $DOCKER_USER -p $DOCKER_PASS
         for img in build-base virtlet-base virtlet; do
           docker images -q -f label=virtlet.image="${img}" --format '{{.Repository}}:{{.Tag}}'
-        done | grep '^mirantis/virtlet' | while read img; do
+        done | grep '^Equinix/virtlet' | while read img; do
           echo >&2 "*** Pushing: ${img}"
           docker push "${img}"
         done
@@ -278,7 +278,7 @@ jobs:
         command: |
           if [[ ! -f _output/vendor.tar ]]; then
             mkdir -p _output
-            docker exec virtlet-build tar -C /go/src/github.com/Mirantis/virtlet -c vendor >_output/vendor.tar
+            docker exec virtlet-build tar -C /go/src/github.com/Equinix/virtlet -c vendor >_output/vendor.tar
           fi
     - save_cache:
         name: Save vendor cache
@@ -322,7 +322,7 @@ jobs:
     - run:
         name: Save image
         command: |
-          docker save mirantis/virtlet >_output/virtlet.tar
+          docker save Equinix/virtlet >_output/virtlet.tar
     - persist_to_workspace:
         root: _output
         paths:
@@ -333,7 +333,7 @@ jobs:
         # needed by integration tests
         - vmwrapper
     - store_artifacts:
-        path: /go/src/github.com/Mirantis/virtlet/_output
+        path: /go/src/github.com/Equinix/virtlet/_output
         destination: virtlet
 
   test:
@@ -428,7 +428,7 @@ jobs:
           build/portforward.sh 18730&
           git config --global user.email bot@virtlet.cloud
           git config --global user.name virtlet-bot
-          git fetch -f https://github.com/Mirantis/virtlet.git docs:docs
+          git fetch -f https://github.com/Equinix/virtlet.git docs:docs
           build/cmd.sh build-docs
           if [[ ${CIRCLE_BRANCH:-} != ${DOCS_SOURCE_BRANCH} ]]; then
             echo >&2 "Not updating docs branch: current branch is ${CIRCLE_BRANCH:-} not ${DOCS_SOURCE_BRANCH}"
@@ -436,7 +436,7 @@ jobs:
             echo >&2 "Not updating docs branch: missing GITHUB_TOKEN env var"
           else
             # if the docs didn't change, this push will do nothing
-            git push https://${GITHUB_TOKEN}@github.com/Mirantis/virtlet.git docs:docs
+            git push https://${GITHUB_TOKEN}@github.com/Equinix/virtlet.git docs:docs
           fi
           tar -czf /tmp/docs.tar.gz _docs
     - store_artifacts:
@@ -462,7 +462,7 @@ jobs:
         command: |
           build/portforward.sh 18730&
           build/cmd.sh start-build-container
-          docker cp _output virtlet-build:/go/src/github.com/Mirantis/virtlet/
+          docker cp _output virtlet-build:/go/src/github.com/Equinix/virtlet/
           build/cmd.sh release "${CIRCLE_TAG}"
 
 workflows:

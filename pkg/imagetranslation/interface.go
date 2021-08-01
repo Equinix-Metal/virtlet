@@ -19,8 +19,8 @@ package imagetranslation
 import (
 	"context"
 
-	"github.com/Mirantis/virtlet/pkg/api/virtlet.k8s/v1"
-	"github.com/Mirantis/virtlet/pkg/image"
+	"github.com/Equinix/virtlet/pkg/api/virtlet.k8s/v1"
+	"github.com/Equinix/virtlet/pkg/image"
 )
 
 // TranslationConfig represents a single config (prefix + rule list) in a config-set

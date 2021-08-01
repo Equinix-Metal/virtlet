@@ -22,7 +22,7 @@ import (
 	"io"
 	"os"
 
-	"github.com/renstrom/dedent"
+	"github.com/lithammer/dedent"
 	"github.com/spf13/cobra"
 )
 

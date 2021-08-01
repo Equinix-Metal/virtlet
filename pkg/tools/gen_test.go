@@ -21,7 +21,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/Mirantis/virtlet/tests/gm"
+	"github.com/Equinix/virtlet/tests/gm"
 )
 
 func TestGenCommand(t *testing.T) {

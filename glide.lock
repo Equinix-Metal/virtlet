@@ -166,7 +166,7 @@ imports:
   version: 792786c7400a136282c1664665ae0a8db921c6c2
   subpackages:
   - difflib
-- name: github.com/renstrom/dedent
+- name: github.com/lithammer/dedent
   version: 8478954c3bc893cf36c5ee7c822266b993a3b3ee
 - name: github.com/russross/blackfriday
   version: cadec560ec52d93835bf2f15bd794700d3a2473b

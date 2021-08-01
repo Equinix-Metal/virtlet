@@ -20,7 +20,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/Mirantis/virtlet/tests/gm"
+	"github.com/Equinix/virtlet/tests/gm"
 	"github.com/davecgh/go-spew/spew"
 	v1 "k8s.io/api/core/v1"
 )

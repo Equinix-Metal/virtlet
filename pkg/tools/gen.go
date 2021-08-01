@@ -25,13 +25,13 @@ import (
 	v1 "k8s.io/api/core/v1"
 	"k8s.io/apimachinery/pkg/runtime"
 
-	"github.com/Mirantis/virtlet/pkg/config"
-	"github.com/Mirantis/virtlet/pkg/version"
+	"github.com/Equinix/virtlet/pkg/config"
+	"github.com/Equinix/virtlet/pkg/version"
 )
 
 const (
 	sourceYamlFile = "deploy/data/virtlet-ds.yaml"
-	virtletImage   = "mirantis/virtlet"
+	virtletImage   = "Equinix/virtlet"
 )
 
 // genCommand is used to generate Kubernetes YAML for Virtlet deployment

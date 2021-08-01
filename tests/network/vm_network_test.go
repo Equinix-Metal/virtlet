@@ -35,10 +35,10 @@ import (
 	"github.com/pmezard/go-difflib/difflib"
 	"github.com/vishvananda/netlink"
 
-	"github.com/Mirantis/virtlet/pkg/nettools"
-	"github.com/Mirantis/virtlet/pkg/network"
-	"github.com/Mirantis/virtlet/pkg/tapmanager"
-	"github.com/Mirantis/virtlet/pkg/utils"
+	"github.com/Equinix/virtlet/pkg/nettools"
+	"github.com/Equinix/virtlet/pkg/network"
+	"github.com/Equinix/virtlet/pkg/tapmanager"
+	"github.com/Equinix/virtlet/pkg/utils"
 )
 
 const (

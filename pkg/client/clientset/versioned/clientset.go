@@ -20,7 +20,7 @@ package versioned
 
 import (
 	glog "github.com/golang/glog"
-	virtletv1 "github.com/Mirantis/virtlet/pkg/client/clientset/versioned/typed/virtlet.k8s/v1"
+	virtletv1 "github.com/Equinix/virtlet/pkg/client/clientset/versioned/typed/virtlet.k8s/v1"
 	discovery "k8s.io/client-go/discovery"
 	rest "k8s.io/client-go/rest"
 	flowcontrol "k8s.io/client-go/util/flowcontrol"

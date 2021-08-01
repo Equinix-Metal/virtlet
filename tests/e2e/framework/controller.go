@@ -49,8 +49,8 @@ import (
 	restclient "k8s.io/client-go/rest"
 	"k8s.io/client-go/tools/clientcmd"
 
-	virtlet_v1 "github.com/Mirantis/virtlet/pkg/api/virtlet.k8s/v1"
-	virtletclientv1 "github.com/Mirantis/virtlet/pkg/client/clientset/versioned/typed/virtlet.k8s/v1"
+	virtlet_v1 "github.com/Equinix/virtlet/pkg/api/virtlet.k8s/v1"
+	virtletclientv1 "github.com/Equinix/virtlet/pkg/client/clientset/versioned/typed/virtlet.k8s/v1"
 )
 
 const (

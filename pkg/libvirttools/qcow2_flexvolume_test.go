@@ -23,11 +23,11 @@ import (
 
 	libvirtxml "github.com/libvirt/libvirt-go-xml"
 
-	"github.com/Mirantis/virtlet/pkg/metadata/types"
-	fakeutils "github.com/Mirantis/virtlet/pkg/utils/fake"
-	testutils "github.com/Mirantis/virtlet/pkg/utils/testing"
-	"github.com/Mirantis/virtlet/pkg/virt/fake"
-	"github.com/Mirantis/virtlet/tests/gm"
+	"github.com/Equinix/virtlet/pkg/metadata/types"
+	fakeutils "github.com/Equinix/virtlet/pkg/utils/fake"
+	testutils "github.com/Equinix/virtlet/pkg/utils/testing"
+	"github.com/Equinix/virtlet/pkg/virt/fake"
+	"github.com/Equinix/virtlet/tests/gm"
 )
 
 const (

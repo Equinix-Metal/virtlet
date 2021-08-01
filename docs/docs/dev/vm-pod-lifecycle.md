@@ -5,7 +5,7 @@ This document describes the lifecycle of VM pod managed by Virtlet.
 This description omits the details of volume setup (using
 [flexvolumes](https://kubernetes.io/docs/concepts/storage/volumes/#flexvolume)),
 handling of logs, the VM console and port forwarding (done by
-[streaming server](https://github.com/Mirantis/virtlet/tree/master/pkg/stream)),
+[streaming server](https://github.com/Equinix/virtlet/tree/master/pkg/stream)),
  or port forwarding.
 
 ## Assumptions
@@ -41,7 +41,7 @@ Virtlet-specific annotation or an image that has Virtlet-specific prefix.
    network interfaces, IP addresses, routes, iptables rules and so on,
    and returns the network configuration information to the caller as described
    in the [CNI spec](https://github.com/containernetworking/cni/blob/master/SPEC.md#result).
- * Virtlet's [`tapmanager`](https://github.com/Mirantis/virtlet/tree/master/pkg/tapmanager)
+ * Virtlet's [`tapmanager`](https://github.com/Equinix/virtlet/tree/master/pkg/tapmanager)
    mechanism adjusts the configuration of the network namespace to make it work with the VM.
  * After creating the sandbox, kubelet starts the containers defined in
    the pod sandbox. Currently, Virtlet supports just one container per VM pod.
@@ -51,13 +51,13 @@ Virtlet-specific annotation or an image that has Virtlet-specific prefix.
    `PullImage` CRI call to pull the image if it doesn't exist or if
    `imagePullPolicy: Always` is used.
  * If `PullImage` is invoked, Virtlet resolves the image location based on the
-   [image name translation configuration](https://github.com/Mirantis/virtlet/blob/master/docs/docs/reference/images.md#image-name-translation),
+   [image name translation configuration](https://github.com/Equinix/virtlet/blob/master/docs/docs/reference/images.md#image-name-translation),
    then downloads the file and stores it in the image store.
  * After the image is ready (no pull was needed or the `PullImage` call completed
    successfully), kubelet uses `CreateContainer` CRI call to create
    the container in the pod sandbox using the specified image.
  * Virtlet uses the sandbox and container metadata to generate libvirt domain definition,
-   using [`vmwrapper`](https://github.com/Mirantis/virtlet/tree/master/cmd/vmwrapper)
+   using [`vmwrapper`](https://github.com/Equinix/virtlet/tree/master/cmd/vmwrapper)
    binary as the emulator and without specifying any network configuration in the domain.
  * After `CreateContainer` call completes, `kubelet` invokes `StartContainer` call
    on the newly created container.
