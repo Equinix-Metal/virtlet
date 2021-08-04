@@ -23,8 +23,8 @@ import (
 
 	libvirtxml "github.com/libvirt/libvirt-go-xml"
 
-	testutils "github.com/Mirantis/virtlet/pkg/utils/testing"
-	"github.com/Mirantis/virtlet/pkg/virt"
+	testutils "github.com/Equinix/virtlet/pkg/utils/testing"
+	"github.com/Equinix/virtlet/pkg/virt"
 )
 
 var capacityUnits = map[string]uint64{

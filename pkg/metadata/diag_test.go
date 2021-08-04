@@ -22,8 +22,8 @@ import (
 
 	"github.com/jonboulle/clockwork"
 
-	"github.com/Mirantis/virtlet/pkg/metadata/fake"
-	"github.com/Mirantis/virtlet/tests/gm"
+	"github.com/Equinix/virtlet/pkg/metadata/fake"
+	"github.com/Equinix/virtlet/tests/gm"
 )
 
 func verifyMetadataDump(t *testing.T, store Store) {

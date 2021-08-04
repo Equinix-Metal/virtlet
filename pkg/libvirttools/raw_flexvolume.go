@@ -23,8 +23,8 @@ import (
 
 	libvirtxml "github.com/libvirt/libvirt-go-xml"
 
-	"github.com/Mirantis/virtlet/pkg/metadata/types"
-	"github.com/Mirantis/virtlet/pkg/utils"
+	"github.com/Equinix/virtlet/pkg/metadata/types"
+	"github.com/Equinix/virtlet/pkg/utils"
 )
 
 type rawVolumeOptions struct {

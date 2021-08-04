@@ -25,8 +25,8 @@ import (
 	libvirt "github.com/libvirt/libvirt-go"
 	libvirtxml "github.com/libvirt/libvirt-go-xml"
 
-	"github.com/Mirantis/virtlet/pkg/libvirttools"
-	virtletutils "github.com/Mirantis/virtlet/pkg/utils"
+	"github.com/Equinix/virtlet/pkg/libvirttools"
+	virtletutils "github.com/Equinix/virtlet/pkg/utils"
 )
 
 const (

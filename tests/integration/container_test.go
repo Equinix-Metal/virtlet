@@ -27,10 +27,10 @@ import (
 	"golang.org/x/net/context"
 	kubeapi "k8s.io/kubernetes/pkg/kubelet/apis/cri/runtime/v1alpha2"
 
-	"github.com/Mirantis/virtlet/pkg/flexvolume"
-	"github.com/Mirantis/virtlet/pkg/fs"
-	"github.com/Mirantis/virtlet/pkg/utils"
-	"github.com/Mirantis/virtlet/tests/criapi"
+	"github.com/Equinix/virtlet/pkg/flexvolume"
+	"github.com/Equinix/virtlet/pkg/fs"
+	"github.com/Equinix/virtlet/pkg/utils"
+	"github.com/Equinix/virtlet/tests/criapi"
 )
 
 const (

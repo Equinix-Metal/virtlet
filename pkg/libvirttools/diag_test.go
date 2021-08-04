@@ -19,9 +19,9 @@ package libvirttools
 import (
 	"testing"
 
-	fakemeta "github.com/Mirantis/virtlet/pkg/metadata/fake"
-	testutils "github.com/Mirantis/virtlet/pkg/utils/testing"
-	"github.com/Mirantis/virtlet/tests/gm"
+	fakemeta "github.com/Equinix/virtlet/pkg/metadata/fake"
+	testutils "github.com/Equinix/virtlet/pkg/utils/testing"
+	"github.com/Equinix/virtlet/tests/gm"
 )
 
 func TestDump(t *testing.T) {

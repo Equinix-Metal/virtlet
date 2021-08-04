@@ -28,7 +28,7 @@ spec:
       containers:
       - command:
         - /libvirt.sh
-        image: mirantis/virtlet
+        image: Equinix/virtlet
         imagePullPolicy: IfNotPresent
         name: libvirt
         readinessProbe:
@@ -65,7 +65,7 @@ spec:
           name: libvirt-log
         - mountPath: /dev
           name: dev
-      - image: mirantis/virtlet
+      - image: Equinix/virtlet
         imagePullPolicy: IfNotPresent
         name: virtlet
         readinessProbe:
@@ -116,7 +116,7 @@ spec:
           name: cgroup
       - command:
         - /vms.sh
-        image: mirantis/virtlet
+        image: Equinix/virtlet
         imagePullPolicy: IfNotPresent
         name: vms
         resources: {}
@@ -208,7 +208,7 @@ spec:
               optional: true
         - name: VIRTLET_IMAGE_TRANSLATIONS_DIR
           value: /etc/virtlet/images
-        image: mirantis/virtlet
+        image: Equinix/virtlet
         imagePullPolicy: IfNotPresent
         name: prepare-node
         resources: {}

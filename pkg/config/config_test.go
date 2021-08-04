@@ -23,7 +23,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/Mirantis/virtlet/tests/gm"
+	"github.com/Equinix/virtlet/tests/gm"
 	"github.com/ghodss/yaml"
 	"github.com/kballard/go-shellquote"
 	flag "github.com/spf13/pflag"
@@ -31,8 +31,8 @@ import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	fakekube "k8s.io/client-go/kubernetes/fake"
 
-	virtlet_v1 "github.com/Mirantis/virtlet/pkg/api/virtlet.k8s/v1"
-	"github.com/Mirantis/virtlet/pkg/client/clientset/versioned/fake"
+	virtlet_v1 "github.com/Equinix/virtlet/pkg/api/virtlet.k8s/v1"
+	"github.com/Equinix/virtlet/pkg/client/clientset/versioned/fake"
 )
 
 func TestDefaultVirtletConfig(t *testing.T) {

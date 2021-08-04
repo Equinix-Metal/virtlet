@@ -27,16 +27,16 @@ import (
 	flag "github.com/spf13/pflag"
 	"k8s.io/client-go/tools/clientcmd"
 
-	"github.com/Mirantis/virtlet/pkg/api/virtlet.k8s/v1"
-	"github.com/Mirantis/virtlet/pkg/cni"
-	"github.com/Mirantis/virtlet/pkg/config"
-	"github.com/Mirantis/virtlet/pkg/diag"
-	"github.com/Mirantis/virtlet/pkg/fs"
-	"github.com/Mirantis/virtlet/pkg/manager"
-	"github.com/Mirantis/virtlet/pkg/nsfix"
-	"github.com/Mirantis/virtlet/pkg/tapmanager"
-	"github.com/Mirantis/virtlet/pkg/utils"
-	"github.com/Mirantis/virtlet/pkg/version"
+	"github.com/Equinix/virtlet/pkg/api/virtlet.k8s/v1"
+	"github.com/Equinix/virtlet/pkg/cni"
+	"github.com/Equinix/virtlet/pkg/config"
+	"github.com/Equinix/virtlet/pkg/diag"
+	"github.com/Equinix/virtlet/pkg/fs"
+	"github.com/Equinix/virtlet/pkg/manager"
+	"github.com/Equinix/virtlet/pkg/nsfix"
+	"github.com/Equinix/virtlet/pkg/tapmanager"
+	"github.com/Equinix/virtlet/pkg/utils"
+	"github.com/Equinix/virtlet/pkg/version"
 )
 
 const (

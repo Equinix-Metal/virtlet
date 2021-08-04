@@ -50,7 +50,7 @@ Kubernetes is an ability to use higher-level Kubernetes objects such
 as StatefulSets, Deployments, DaemonSets etc. trivially with VMs.
 
 Virtlet includes a
-[nested Kubernetes example](https://github.com/Mirantis/virtlet/blob/master/examples/k8s.yaml)
+[nested Kubernetes example](https://github.com/Equinix/virtlet/blob/master/examples/k8s.yaml)
 which makes a nested Kubernetes cluster using a
 [StatefulSet](https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/)
 of 3 VM pods, which are initialized using

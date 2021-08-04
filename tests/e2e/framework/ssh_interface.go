@@ -24,7 +24,7 @@ import (
 
 	"golang.org/x/crypto/ssh"
 
-	"github.com/Mirantis/virtlet/pkg/tools"
+	"github.com/Equinix/virtlet/pkg/tools"
 )
 
 type sshInterface struct {

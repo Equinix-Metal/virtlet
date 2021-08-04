@@ -20,9 +20,9 @@ import (
 	. "github.com/onsi/gomega"
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 
-	virtlet_v1 "github.com/Mirantis/virtlet/pkg/api/virtlet.k8s/v1"
-	"github.com/Mirantis/virtlet/tests/e2e/framework"
-	. "github.com/Mirantis/virtlet/tests/e2e/ginkgo-ext"
+	virtlet_v1 "github.com/Equinix/virtlet/pkg/api/virtlet.k8s/v1"
+	"github.com/Equinix/virtlet/tests/e2e/framework"
+	. "github.com/Equinix/virtlet/tests/e2e/ginkgo-ext"
 )
 
 var _ = Describe("Per-node configuration", func() {

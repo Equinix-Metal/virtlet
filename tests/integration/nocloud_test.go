@@ -22,8 +22,8 @@ import (
 
 	kubeapi "k8s.io/kubernetes/pkg/kubelet/apis/cri/runtime/v1alpha2"
 
-	"github.com/Mirantis/virtlet/pkg/utils"
-	testutils "github.com/Mirantis/virtlet/pkg/utils/testing"
+	"github.com/Equinix/virtlet/pkg/utils"
+	testutils "github.com/Equinix/virtlet/pkg/utils/testing"
 )
 
 const (

@@ -1,5 +1,5 @@
 FROM ubuntu:16.04
-MAINTAINER Ivan Shvedunov <ishvedunov@mirantis.com>
+MAINTAINER Brandon Feng <bfeng@equinix.com>
 
 # BUMP 23.11.2018
 

@@ -32,7 +32,7 @@ if [[ ! -e "${DIND_SCRIPT}" ]]; then
   exit 1
 fi
 
-base_url="https://circleci.com/api/v1.1/project/github/Mirantis/virtlet"
+base_url="https://circleci.com/api/v1.1/project/github/Equinix/virtlet"
 
 rm -rf virtlet-circle-dump
 mkdir virtlet-circle-dump

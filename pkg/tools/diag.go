@@ -28,8 +28,8 @@ import (
 	"github.com/spf13/cobra"
 	v1 "k8s.io/api/core/v1"
 
-	"github.com/Mirantis/virtlet/pkg/diag"
-	"github.com/Mirantis/virtlet/pkg/version"
+	"github.com/Equinix/virtlet/pkg/diag"
+	"github.com/Equinix/virtlet/pkg/version"
 )
 
 const (
@@ -48,7 +48,7 @@ spec:
   env:
   - name: RESULTS_DIR
     value: /tmp/results
-  image: mirantis/virtlet$TAG
+  image: Equinix/virtlet$TAG
   name: sonobuoy-virtlet
   volumeMounts:
   - mountPath: /tmp/results

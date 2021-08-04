@@ -23,8 +23,8 @@ import (
 	. "github.com/onsi/gomega"
 	"k8s.io/api/core/v1"
 
-	"github.com/Mirantis/virtlet/tests/e2e/framework"
-	. "github.com/Mirantis/virtlet/tests/e2e/ginkgo-ext"
+	"github.com/Equinix/virtlet/tests/e2e/framework"
+	. "github.com/Equinix/virtlet/tests/e2e/ginkgo-ext"
 )
 
 var _ = Describe("Ceph volumes tests", func() {

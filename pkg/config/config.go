@@ -21,13 +21,13 @@ import (
 	"math"
 	"sort"
 
-	virtletclient "github.com/Mirantis/virtlet/pkg/client/clientset/versioned"
+	virtletclient "github.com/Equinix/virtlet/pkg/client/clientset/versioned"
 	flag "github.com/spf13/pflag"
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/client-go/kubernetes"
 	"k8s.io/client-go/tools/clientcmd"
 
-	virtlet_v1 "github.com/Mirantis/virtlet/pkg/api/virtlet.k8s/v1"
+	virtlet_v1 "github.com/Equinix/virtlet/pkg/api/virtlet.k8s/v1"
 )
 
 const (

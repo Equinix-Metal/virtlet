@@ -5,7 +5,7 @@ set -o pipefail
 set -o errtrace
 
 CRIPROXY_DEB_URL="${CRIPROXY_DEB_URL:-https://github.com/Mirantis/criproxy/releases/download/v0.14.0/criproxy-nodeps_0.14.0_amd64.deb}"
-VIRTLET_IMAGE="${VIRTLET_IMAGE:-mirantis/virtlet}"
+VIRTLET_IMAGE="${VIRTLET_IMAGE:-Equinix/virtlet}"
 VIRTLET_SKIP_RSYNC="${VIRTLET_SKIP_RSYNC:-}"
 VIRTLET_SKIP_VENDOR="${VIRTLET_SKIP_VENDOR:-false}"
 VIRTLET_RSYNC_PORT="${VIRTLET_RSYNC_PORT:-18730}"
@@ -21,8 +21,8 @@ MKDOCS_SERVE_ADDRESS="${MKDOCS_SERVE_ADDRESS:-localhost:8042}"
 
 # Note that project_dir must not end with slash
 project_dir="$(cd "$(dirname "${BASH_SOURCE}")/.." && pwd)"
-virtlet_image="mirantis/virtlet"
-remote_project_dir="/go/src/github.com/Mirantis/virtlet"
+virtlet_image="Equinix/virtlet"
+remote_project_dir="/go/src/github.com/Equinix/virtlet"
 build_name="virtlet_build"
 tmp_container_name="${build_name}-$(openssl rand -hex 16)"
 build_image=${build_name}:latest
@@ -51,13 +51,28 @@ bindata_out="pkg/tools/bindata.go"
 bindata_dir="deploy/data"
 bindata_pkg="tools"
 ldflags=()
-go_package=github.com/Mirantis/virtlet
+go_package=github.com/Equinix/virtlet
 
 function image_tags_filter {
     local tag="${1}"
     local prefix=".items[0].spec.template.spec."
-    local suffix="|=map(.image=\"mirantis/virtlet:${tag}\")"
+    local suffix="|=map(.image=\"Equinix/virtlet:${tag}\")"
     echo -n "${prefix}containers${suffix}|${prefix}initContainers${suffix}"
+}
+
+function version() {
+	inside_git=$(shell git rev-parse --is-inside-work-tree 2>&1 >/dev/null; echo $$?)
+	if [ $inside_git == 0 ]; then
+    echo "Not in GIT repo and VERSION variable is not set."
+    version='unknown'
+	else
+		# Getting binary version to be embedded into broker file.
+		# Format would be LAST_TAG_IN_GIT+REVISION_COUNT_SINCE_LAST_TAG.8CHARS_FROM_CURRENT_COMMIT_SHA1.
+		DATE_TIME=$(date +%Y-%m-%d-%H:%M:%S)
+    VERSION_HASH=$(git show --summary | head -1 | awk '{print substr($2,0,8)}')
+    version="v${DATE_TIME}::${VERSION_HASH}"
+  fi
+  return "$version"
 }
 
 # from build/common.sh in k8s
@@ -96,6 +111,7 @@ function update_dockerfile_from {
         if [[ ${dest_var} ]]; then
             eval "${dest_var}=${new_from}"
         fi
+        echo "dest_var = ${dest_var}"
     else
         echo >&2 "*** ERROR: can't update FROM in ${dockerfile}: unexpected value: '${cur_from}'"
         return 1
@@ -107,6 +123,7 @@ function ensure_build_image {
     update_dockerfile_from "${project_dir}/images/Dockerfile.build" "${project_dir}/images/Dockerfile.build-base" build_base_image
     update_dockerfile_from "${project_dir}/images/Dockerfile.virtlet" "${project_dir}/images/Dockerfile.virtlet-base"
 
+    echo "build_image=${build_image} build_base_image=${build_base_image} virtlet_base_image=${virtlet_base_image}"
     if ! image_exists "${build_image}"; then
         if ! image_exists "${build_base_image}"; then
             if ! image_exists "${virtlet_base_image}"; then
@@ -538,13 +555,13 @@ function update_generated_docs_internal {
 function update_generated_internal {
   install_vendor_internal
   vendor/k8s.io/code-generator/generate-groups.sh all \
-    github.com/Mirantis/virtlet/pkg/client github.com/Mirantis/virtlet/pkg/api \
+    github.com/Equinix/virtlet/pkg/client github.com/Equinix/virtlet/pkg/api \
     virtlet.k8s:v1 \
     --go-header-file "build/custom-boilerplate.go.txt"
   # fix import url case issues
   find pkg/client \
        -name '*.go' \
-       -exec sed -i 's@github\.com/mirantis/virtlet@github\.com/Mirantis/virtlet@g' \
+       -exec sed -i 's@github\.com/Equinix/virtlet@github\.com/Equinix/virtlet@g' \
        '{}' \;
 }
 

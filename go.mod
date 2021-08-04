@@ -1,4 +1,4 @@
-module github.com/Mirantis/virtlet
+module github.com/Equinix/virtlet
 
 go 1.16
 

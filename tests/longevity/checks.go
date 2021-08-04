@@ -21,7 +21,7 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/Mirantis/virtlet/tests/e2e/framework"
+	"github.com/Equinix/virtlet/tests/e2e/framework"
 	"github.com/golang/glog"
 )
 

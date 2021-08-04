@@ -26,9 +26,9 @@ import (
 	cnicurrent "github.com/containernetworking/cni/pkg/types/current"
 	"github.com/vishvananda/netlink"
 
-	"github.com/Mirantis/virtlet/pkg/cni"
-	"github.com/Mirantis/virtlet/pkg/nettools"
-	"github.com/Mirantis/virtlet/pkg/utils"
+	"github.com/Equinix/virtlet/pkg/cni"
+	"github.com/Equinix/virtlet/pkg/nettools"
+	"github.com/Equinix/virtlet/pkg/utils"
 )
 
 const (

@@ -19,8 +19,8 @@ limitations under the License.
 package virtlet
 
 import (
-	internalinterfaces "github.com/Mirantis/virtlet/pkg/client/informers/externalversions/internalinterfaces"
-	v1 "github.com/Mirantis/virtlet/pkg/client/informers/externalversions/virtlet.k8s/v1"
+	internalinterfaces "github.com/Equinix/virtlet/pkg/client/informers/externalversions/internalinterfaces"
+	v1 "github.com/Equinix/virtlet/pkg/client/informers/externalversions/virtlet.k8s/v1"
 )
 
 // Interface provides access to each of this group's versions.

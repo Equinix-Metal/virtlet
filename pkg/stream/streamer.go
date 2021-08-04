@@ -23,7 +23,7 @@ import (
 	"net"
 	"os/exec"
 
-	"github.com/Mirantis/virtlet/pkg/cni"
+	"github.com/Equinix/virtlet/pkg/cni"
 	"github.com/docker/docker/pkg/pools"
 	"github.com/golang/glog"
 

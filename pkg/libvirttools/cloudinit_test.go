@@ -32,11 +32,11 @@ import (
 	"github.com/davecgh/go-spew/spew"
 	"github.com/ghodss/yaml"
 
-	"github.com/Mirantis/virtlet/pkg/metadata/types"
-	"github.com/Mirantis/virtlet/pkg/network"
-	"github.com/Mirantis/virtlet/pkg/utils"
-	testutils "github.com/Mirantis/virtlet/pkg/utils/testing"
-	"github.com/Mirantis/virtlet/tests/gm"
+	"github.com/Equinix/virtlet/pkg/metadata/types"
+	"github.com/Equinix/virtlet/pkg/network"
+	"github.com/Equinix/virtlet/pkg/utils"
+	testutils "github.com/Equinix/virtlet/pkg/utils/testing"
+	"github.com/Equinix/virtlet/tests/gm"
 	libvirtxml "github.com/libvirt/libvirt-go-xml"
 )
 

@@ -21,7 +21,7 @@ import (
 	"path"
 	"strings"
 
-	"github.com/Mirantis/virtlet/pkg/metadata/types"
+	"github.com/Equinix/virtlet/pkg/metadata/types"
 )
 
 // GetFileSystemVolumes using prepared by kubelet volumes and contained in pod sandbox

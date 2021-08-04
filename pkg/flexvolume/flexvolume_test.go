@@ -25,9 +25,9 @@ import (
 	"strings"
 	"testing"
 
-	fakefs "github.com/Mirantis/virtlet/pkg/fs/fake"
-	"github.com/Mirantis/virtlet/pkg/utils"
-	testutils "github.com/Mirantis/virtlet/pkg/utils/testing"
+	fakefs "github.com/Equinix/virtlet/pkg/fs/fake"
+	"github.com/Equinix/virtlet/pkg/utils"
+	testutils "github.com/Equinix/virtlet/pkg/utils/testing"
 )
 
 const (

@@ -1,4 +1,4 @@
-package: github.com/Mirantis/virtlet
+package: github.com/Equinix/virtlet
 import:
 - package: github.com/coreos/go-systemd
   version: 4484981625c1a6a2ecb40a390fcb6a9bcfee76e3

@@ -26,7 +26,7 @@ import (
 
 	libvirtxml "github.com/libvirt/libvirt-go-xml"
 
-	"github.com/Mirantis/virtlet/pkg/metadata/types"
+	"github.com/Equinix/virtlet/pkg/metadata/types"
 )
 
 func TestBlockVolumeSource(t *testing.T) {

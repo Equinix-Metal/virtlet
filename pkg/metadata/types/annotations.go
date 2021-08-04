@@ -27,7 +27,7 @@ import (
 	uuid "github.com/nu7hatch/gouuid"
 	"k8s.io/apimachinery/pkg/api/resource"
 
-	"github.com/Mirantis/virtlet/pkg/utils"
+	"github.com/Equinix/virtlet/pkg/utils"
 )
 
 const (

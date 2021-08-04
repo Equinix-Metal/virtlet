@@ -25,8 +25,8 @@ import (
 	"github.com/onsi/ginkgo/reporters"
 	. "github.com/onsi/gomega"
 
-	"github.com/Mirantis/virtlet/tests/e2e/framework"
-	. "github.com/Mirantis/virtlet/tests/e2e/ginkgo-ext"
+	"github.com/Equinix/virtlet/tests/e2e/framework"
+	. "github.com/Equinix/virtlet/tests/e2e/ginkgo-ext"
 )
 
 func TestE2E(t *testing.T) {

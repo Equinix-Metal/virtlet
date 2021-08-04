@@ -19,8 +19,8 @@ package main
 import (
 	"flag"
 
-	"github.com/Mirantis/virtlet/tests/e2e/framework"
-	"github.com/Mirantis/virtlet/tests/longevity"
+	"github.com/Equinix/virtlet/tests/e2e/framework"
+	"github.com/Equinix/virtlet/tests/longevity"
 	"github.com/golang/glog"
 )
 

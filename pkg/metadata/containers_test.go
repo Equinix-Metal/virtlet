@@ -21,8 +21,8 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/Mirantis/virtlet/pkg/metadata/fake"
-	"github.com/Mirantis/virtlet/pkg/metadata/types"
+	"github.com/Equinix/virtlet/pkg/metadata/fake"
+	"github.com/Equinix/virtlet/pkg/metadata/types"
 )
 
 func TestSetGetContainerInfo(t *testing.T) {

@@ -38,7 +38,7 @@ import (
 	"k8s.io/client-go/transport/spdy"
 	"k8s.io/client-go/util/exec"
 
-	"github.com/Mirantis/virtlet/pkg/tools"
+	"github.com/Equinix/virtlet/pkg/tools"
 )
 
 // PodInterface provides API to work with a pod

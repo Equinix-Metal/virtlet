@@ -23,7 +23,7 @@ import (
 
 	libvirtxml "github.com/libvirt/libvirt-go-xml"
 
-	"github.com/Mirantis/virtlet/pkg/virt"
+	"github.com/Equinix/virtlet/pkg/virt"
 )
 
 // diskPath contains paths that can be used to locate a device inside

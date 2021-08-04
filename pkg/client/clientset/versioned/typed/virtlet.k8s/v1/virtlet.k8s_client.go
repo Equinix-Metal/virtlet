@@ -19,8 +19,8 @@ limitations under the License.
 package v1
 
 import (
-	v1 "github.com/Mirantis/virtlet/pkg/api/virtlet.k8s/v1"
-	"github.com/Mirantis/virtlet/pkg/client/clientset/versioned/scheme"
+	v1 "github.com/Equinix/virtlet/pkg/api/virtlet.k8s/v1"
+	"github.com/Equinix/virtlet/pkg/client/clientset/versioned/scheme"
 	serializer "k8s.io/apimachinery/pkg/runtime/serializer"
 	rest "k8s.io/client-go/rest"
 )

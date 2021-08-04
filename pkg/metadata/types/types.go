@@ -17,8 +17,8 @@ limitations under the License.
 package types
 
 import (
-	"github.com/Mirantis/virtlet/pkg/network"
-	"github.com/Mirantis/virtlet/pkg/utils"
+	"github.com/Equinix/virtlet/pkg/network"
+	"github.com/Equinix/virtlet/pkg/utils"
 )
 
 const (

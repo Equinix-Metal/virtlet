@@ -1,4 +1,4 @@
-# virtlet [![CircleCI](https://circleci.com/gh/Mirantis/virtlet/tree/master.svg?style=svg)](https://circleci.com/gh/Mirantis/virtlet/tree/master) [![Maintainability](https://api.codeclimate.com/v1/badges/7e40b1e1d7cd78c86a50/maintainability)](https://codeclimate.com/github/Mirantis/virtlet/maintainability) [![Go Report Card](https://goreportcard.com/badge/github.com/Mirantis/virtlet)](https://goreportcard.com/report/github.com/Mirantis/virtlet)
+# virtlet [![CircleCI](https://circleci.com/gh/Equinix/virtlet/tree/master.svg?style=svg)](https://circleci.com/gh/Equinix/virtlet/tree/master) [![Maintainability](https://api.codeclimate.com/v1/badges/7e40b1e1d7cd78c86a50/maintainability)](https://codeclimate.com/github/Equinix/virtlet/maintainability) [![Go Report Card](https://goreportcard.com/badge/github.com/Equinix/virtlet)](https://goreportcard.com/report/github.com/Equinix/virtlet)
 
 Virtlet is a Kubernetes runtime server which allows you to run VM workloads, based on QCOW2 images.
 
@@ -29,7 +29,7 @@ You can watch and listen to Virtlet demo video that was recorded on Kubernetes C
 ### Command line interface
 
 Virtlet comes with a helper tool,
-[virtletctl](https://docs.virtlet.cloud/reference/virtletctl/), that helps managing the VM pods. The binaries are available for Linux and Mac OS X in the [Releases](https://github.com/Mirantis/virtlet/releases) section.
+[virtletctl](https://docs.virtlet.cloud/reference/virtletctl/), that helps managing the VM pods. The binaries are available for Linux and Mac OS X in the [Releases](https://github.com/Equinix/virtlet/releases) section.
 You can also install virtletctl as a kubectl plugin:
 ```
 virtletctl install
@@ -46,7 +46,7 @@ You can watch sample usage session under [this](https://asciinema.org/a/1a6xp5j4
 
 You can also give Virtlet a quick try using our demo script (requires Docker 1.12+):
 ```
-wget https://raw.githubusercontent.com/Mirantis/virtlet/master/deploy/demo.sh
+wget https://raw.githubusercontent.com/Equinix/virtlet/master/deploy/demo.sh
 chmod +x demo.sh
 # './demo.sh --help' displays the description
 ./demo.sh
@@ -86,7 +86,7 @@ Virtlet has no problems handling them on Kubernetes as demonstrated in this
 
 ## Need any help with Virtlet?
 
-If you will encounter any issue when using Virtlet please look into our [issue tracker](http://github.com/Mirantis/virtlet/issues) on github. If your case is not mentioned there - please fill new issue for it. In case of any questions you may also use [#virtlet](https://kubernetes.slack.com/messages/virtlet/) channel on
+If you will encounter any issue when using Virtlet please look into our [issue tracker](http://github.com/Equinix/virtlet/issues) on github. If your case is not mentioned there - please fill new issue for it. In case of any questions you may also use [#virtlet](https://kubernetes.slack.com/messages/virtlet/) channel on
 [Kubernetes Slack](https://kubernetes.slack.com/messages).
 
 ## Contributing

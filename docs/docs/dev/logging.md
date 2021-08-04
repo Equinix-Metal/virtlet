@@ -17,7 +17,7 @@ There is one directory on host needed:
 
 * **/var/log/pods** (predefined by Kubernetes) is where Kubernetes expects JSON formatted logs to appear.
 
-NOTE: It is important to configure volume mount for `mirantis/virtlet`.
+NOTE: It is important to configure volume mount for `Equinix/virtlet`.
 
 Kubernetes is not able to find and understand raw log files that contain direct dumps from VM. Therefore
 we run a worker which is reformatting VM logs into a special JSON format that is understood

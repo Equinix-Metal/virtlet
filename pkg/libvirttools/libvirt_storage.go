@@ -24,8 +24,8 @@ import (
 	libvirt "github.com/libvirt/libvirt-go"
 	libvirtxml "github.com/libvirt/libvirt-go-xml"
 
-	"github.com/Mirantis/virtlet/pkg/diskimage"
-	"github.com/Mirantis/virtlet/pkg/virt"
+	"github.com/Equinix/virtlet/pkg/diskimage"
+	"github.com/Equinix/virtlet/pkg/virt"
 )
 
 type libvirtStorageConnection struct {

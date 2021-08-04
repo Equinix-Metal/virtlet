@@ -32,17 +32,17 @@ import (
 	"k8s.io/apimachinery/pkg/runtime"
 	fakekube "k8s.io/client-go/kubernetes/fake"
 
-	"github.com/Mirantis/virtlet/pkg/flexvolume"
-	"github.com/Mirantis/virtlet/pkg/fs"
-	fakefs "github.com/Mirantis/virtlet/pkg/fs/fake"
-	"github.com/Mirantis/virtlet/pkg/metadata"
-	fakemeta "github.com/Mirantis/virtlet/pkg/metadata/fake"
-	"github.com/Mirantis/virtlet/pkg/metadata/types"
-	"github.com/Mirantis/virtlet/pkg/utils"
-	fakeutils "github.com/Mirantis/virtlet/pkg/utils/fake"
-	testutils "github.com/Mirantis/virtlet/pkg/utils/testing"
-	"github.com/Mirantis/virtlet/pkg/virt/fake"
-	"github.com/Mirantis/virtlet/tests/gm"
+	"github.com/Equinix/virtlet/pkg/flexvolume"
+	"github.com/Equinix/virtlet/pkg/fs"
+	fakefs "github.com/Equinix/virtlet/pkg/fs/fake"
+	"github.com/Equinix/virtlet/pkg/metadata"
+	fakemeta "github.com/Equinix/virtlet/pkg/metadata/fake"
+	"github.com/Equinix/virtlet/pkg/metadata/types"
+	"github.com/Equinix/virtlet/pkg/utils"
+	fakeutils "github.com/Equinix/virtlet/pkg/utils/fake"
+	testutils "github.com/Equinix/virtlet/pkg/utils/testing"
+	"github.com/Equinix/virtlet/pkg/virt/fake"
+	"github.com/Equinix/virtlet/tests/gm"
 )
 
 const (

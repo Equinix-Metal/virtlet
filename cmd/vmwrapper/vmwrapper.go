@@ -25,12 +25,12 @@ import (
 
 	"github.com/golang/glog"
 
-	"github.com/Mirantis/virtlet/pkg/config"
-	"github.com/Mirantis/virtlet/pkg/network"
-	"github.com/Mirantis/virtlet/pkg/nsfix"
-	"github.com/Mirantis/virtlet/pkg/tapmanager"
-	"github.com/Mirantis/virtlet/pkg/utils"
-	"github.com/Mirantis/virtlet/pkg/utils/cgroups"
+	"github.com/Equinix/virtlet/pkg/config"
+	"github.com/Equinix/virtlet/pkg/network"
+	"github.com/Equinix/virtlet/pkg/nsfix"
+	"github.com/Equinix/virtlet/pkg/tapmanager"
+	"github.com/Equinix/virtlet/pkg/utils"
+	"github.com/Equinix/virtlet/pkg/utils/cgroups"
 )
 
 const (

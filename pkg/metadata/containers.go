@@ -24,7 +24,7 @@ import (
 
 	"github.com/boltdb/bolt"
 
-	"github.com/Mirantis/virtlet/pkg/metadata/types"
+	"github.com/Equinix/virtlet/pkg/metadata/types"
 )
 
 var (

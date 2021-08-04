@@ -24,8 +24,8 @@ import (
 	"github.com/davecgh/go-spew/spew"
 	"github.com/golang/glog"
 
-	"github.com/Mirantis/virtlet/pkg/nsfix"
-	"github.com/Mirantis/virtlet/pkg/utils"
+	"github.com/Equinix/virtlet/pkg/nsfix"
+	"github.com/Equinix/virtlet/pkg/utils"
 )
 
 // Client provides an interface to CNI plugins.

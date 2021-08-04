@@ -40,7 +40,7 @@ data:
       env:
       - name: RESULTS_DIR
         value: /tmp/results
-      image: mirantis/virtlet
+      image: Equinix/virtlet
       name: sonobuoy-virtlet
       volumeMounts:
       - mountPath: /tmp/results

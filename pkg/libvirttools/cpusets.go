@@ -23,8 +23,8 @@ import (
 
 	libvirtxml "github.com/libvirt/libvirt-go-xml"
 
-	vconfig "github.com/Mirantis/virtlet/pkg/config"
-	"github.com/Mirantis/virtlet/pkg/utils/cgroups"
+	vconfig "github.com/Equinix/virtlet/pkg/config"
+	"github.com/Equinix/virtlet/pkg/utils/cgroups"
 )
 
 const (

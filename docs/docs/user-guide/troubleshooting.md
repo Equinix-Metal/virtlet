@@ -18,4 +18,4 @@ A: Please ensure that you have installed Virtlet using `virtletctl gen | kubectl
 
 Q: I've gone through all of the above suggestions but still, I have problems running Virtlet runtime or any VM pods.
 
-A: Reach us on [Virtlet channel on Kubernetes Slack](https://kubernetes.slack.com/messages/virtlet/) or file a [GitHub issue](https://github.com/Mirantis/virtlet/issues).
+A: Reach us on [Virtlet channel on Kubernetes Slack](https://kubernetes.slack.com/messages/virtlet/) or file a [GitHub issue](https://github.com/Equinix/virtlet/issues).
