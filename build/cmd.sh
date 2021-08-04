@@ -5,7 +5,7 @@ set -o pipefail
 set -o errtrace
 
 CRIPROXY_DEB_URL="${CRIPROXY_DEB_URL:-https://github.com/Mirantis/criproxy/releases/download/v0.14.0/criproxy-nodeps_0.14.0_amd64.deb}"
-VIRTLET_IMAGE="${VIRTLET_IMAGE:-Equinix/virtlet}"
+VIRTLET_IMAGE="${VIRTLET_IMAGE:-equinix/virtlet}"
 VIRTLET_SKIP_RSYNC="${VIRTLET_SKIP_RSYNC:-}"
 VIRTLET_SKIP_VENDOR="${VIRTLET_SKIP_VENDOR:-false}"
 VIRTLET_RSYNC_PORT="${VIRTLET_RSYNC_PORT:-18730}"
@@ -21,7 +21,7 @@ MKDOCS_SERVE_ADDRESS="${MKDOCS_SERVE_ADDRESS:-localhost:8042}"
 
 # Note that project_dir must not end with slash
 project_dir="$(cd "$(dirname "${BASH_SOURCE}")/.." && pwd)"
-virtlet_image="Equinix/virtlet"
+virtlet_image="equinix/virtlet"
 remote_project_dir="/go/src/github.com/Equinix/virtlet"
 build_name="virtlet_build"
 tmp_container_name="${build_name}-$(openssl rand -hex 16)"
@@ -56,23 +56,24 @@ go_package=github.com/Equinix/virtlet
 function image_tags_filter {
     local tag="${1}"
     local prefix=".items[0].spec.template.spec."
-    local suffix="|=map(.image=\"Equinix/virtlet:${tag}\")"
+    local suffix="|=map(.image=\"equinix/virtlet:${tag}\")"
     echo -n "${prefix}containers${suffix}|${prefix}initContainers${suffix}"
 }
 
-function version() {
-	inside_git=$(shell git rev-parse --is-inside-work-tree 2>&1 >/dev/null; echo $$?)
-	if [ $inside_git == 0 ]; then
+function get_version() {
+	inside_git=$(git rev-parse --is-inside-work-tree 2>&1 >/dev/null; echo $?)
+	if [ $inside_git != 0 ]; then
     echo "Not in GIT repo and VERSION variable is not set."
-    version='unknown'
+    version='latest'
 	else
 		# Getting binary version to be embedded into broker file.
 		# Format would be LAST_TAG_IN_GIT+REVISION_COUNT_SINCE_LAST_TAG.8CHARS_FROM_CURRENT_COMMIT_SHA1.
-		DATE_TIME=$(date +%Y-%m-%d-%H:%M:%S)
+		DATE_TIME=$(date +%Y-%m-%d-%H-%M-%S)
     VERSION_HASH=$(git show --summary | head -1 | awk '{print substr($2,0,8)}')
-    version="v${DATE_TIME}::${VERSION_HASH}"
+    version="v${DATE_TIME}-${VERSION_HASH}"
   fi
-  return "$version"
+  echo "$version" >"${project_dir}/_output/version"
+  return 0
 }
 
 # from build/common.sh in k8s
@@ -119,12 +120,32 @@ function update_dockerfile_from {
 }
 
 function ensure_build_image {
-    update_dockerfile_from "${project_dir}/images/Dockerfile.build-base" "${project_dir}/images/Dockerfile.virtlet-base" virtlet_base_image
-    update_dockerfile_from "${project_dir}/images/Dockerfile.build" "${project_dir}/images/Dockerfile.build-base" build_base_image
-    update_dockerfile_from "${project_dir}/images/Dockerfile.virtlet" "${project_dir}/images/Dockerfile.virtlet-base"
+#    update_dockerfile_from "${project_dir}/images/Dockerfile.build-base" "${project_dir}/images/Dockerfile.virtlet-base" virtlet_base_image
+#    update_dockerfile_from "${project_dir}/images/Dockerfile.build" "${project_dir}/images/Dockerfile.build-base" build_base_image
+#    update_dockerfile_from "${project_dir}/images/Dockerfile.virtlet" "${project_dir}/images/Dockerfile.virtlet-base"
+#
+#    echo "build_image=${build_image} build_base_image=${build_base_image} virtlet_base_image=${virtlet_base_image}"
+    mkdir -p "${project_dir}/_output"
+    get_version
+    build_tag="$(cat "${project_dir}/_output/version")"
+    virtlet_base_image="ryugu-psie-docker-dev-local.jfrog.io/equinix/virtlet-base:${build_tag}"
+    build_base_image="ryugu-psie-docker-dev-local.jfrog.io/equinix/virtlet-build-base:${build_tag}"
+    echo >&2 "Trying to pull the base image ${virtlet_base_image}..."
+    if ! docker pull "${virtlet_base_image}"; then
+        docker build -t "${virtlet_base_image}" \
+               -f "${project_dir}/images/Dockerfile.virtlet-base" \
+               --build-arg VIRLET_BASE_TAG=build_tag "${project_dir}/images"
+    fi
+    echo >&2 "Trying to pull the build base image ${build_base_image}..."
+    if ! docker pull "${build_base_image}"; then
+        docker build -t "${build_base_image}" \
+               --label virtlet_image=build-base \
+               --build-arg BASE_TAG=build_tag \
+               -f "${project_dir}/images/Dockerfile.build-base" "${project_dir}/images"
+    fi
+    tar -C "${project_dir}/images" -c image_skel/ qemu-build.conf Dockerfile.build |
+        docker build -t "${build_image}" -f Dockerfile.build -
 
-    echo "build_image=${build_image} build_base_image=${build_base_image} virtlet_base_image=${virtlet_base_image}"
-    build_tag=version
     if ! image_exists "${build_image}"; then
         if ! image_exists "${build_base_image}"; then
             if ! image_exists "${virtlet_base_image}"; then

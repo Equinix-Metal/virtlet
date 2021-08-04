@@ -184,7 +184,7 @@ spec:
         - mountPath: /run
           # Don't add "mountPropagation: Bidirectional", it will lack mount entry
           name: run
-        # /boot and /lib/modules are required by supermin
+        # /boot and /lib/modules are required by supermin5
         - mountPath: /lib/modules
           name: modules
           readOnly: true
