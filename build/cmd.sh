@@ -124,18 +124,22 @@ function ensure_build_image {
     update_dockerfile_from "${project_dir}/images/Dockerfile.virtlet" "${project_dir}/images/Dockerfile.virtlet-base"
 
     echo "build_image=${build_image} build_base_image=${build_base_image} virtlet_base_image=${virtlet_base_image}"
+    build_tag=version
     if ! image_exists "${build_image}"; then
         if ! image_exists "${build_base_image}"; then
             if ! image_exists "${virtlet_base_image}"; then
                 echo >&2 "Trying to pull the base image ${virtlet_base_image}..."
                 if ! docker pull "${virtlet_base_image}"; then
-                    docker build -t "${virtlet_base_image}" -f "${project_dir}/images/Dockerfile.virtlet-base" "${project_dir}/images"
+                    docker build -t "${virtlet_base_image}" \
+                           -f "${project_dir}/images/Dockerfile.virtlet-base" \
+                           --build-arg VIRLET_BASE_TAG=build_tag "${project_dir}/images"
                 fi
             fi
             echo >&2 "Trying to pull the build base image ${build_base_image}..."
             if ! docker pull "${build_base_image}"; then
                 docker build -t "${build_base_image}" \
                        --label virtlet_image=build-base \
+                       --build-arg BASE_TAG=build_tag \
                        -f "${project_dir}/images/Dockerfile.build-base" "${project_dir}/images"
             fi
         fi
