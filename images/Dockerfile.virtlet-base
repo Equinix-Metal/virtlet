@@ -11,7 +11,10 @@ RUN echo deb-src http://archive.ubuntu.com/ubuntu/ xenial main universe restrict
 RUN apt-get -y update && \
     apt-get -y build-dep libguestfs && \
     apt-get -y build-dep supermin5 && \
-    apt-get -y install git libjansson-dev libhivex-ocaml-dev
+    apt-get -y install git libjansson-dev libhivex-ocaml-dev && \
+    apt-get -y install --reinstall ca-certificates
+
+RUN git config --global http.sslverify false
 
 RUN git clone https://github.com/libguestfs/supermin5.git && \
     cd supermin5 && \
