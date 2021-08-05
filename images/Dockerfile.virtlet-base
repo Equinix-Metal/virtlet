@@ -1,20 +1,23 @@
-FROM ubuntu:16.04
+FROM ubuntu:18.04
 MAINTAINER Brandon Feng <bfeng@equinix.com>
 
 # BUMP 23.11.2018
 
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN echo deb-src http://archive.ubuntu.com/ubuntu/ xenial main universe restricted >>/etc/apt/sources.list && \
-    echo deb-src http://archive.ubuntu.com/ubuntu/ xenial-updates main universe restricted >>/etc/apt/sources.list
+RUN echo deb-src http://archive.ubuntu.com/ubuntu/ bionic main universe restricted >>/etc/apt/sources.list && \
+    echo deb-src http://archive.ubuntu.com/ubuntu/ bionic-updates main universe restricted >>/etc/apt/sources.list
 
 RUN apt-get -y update && \
+    apt-get install -y software-properties-common && \
+    apt-add-repository ppa:git-core/ppa && \
+    apt-get -y update && \
     apt-get -y build-dep libguestfs && \
     apt-get -y build-dep supermin5 && \
-    apt-get -y install git libjansson-dev libhivex-ocaml-dev && \
-    apt-get -y install --reinstall ca-certificates
-
-RUN git config --global http.sslverify false
+    apt-get -y install git git-lfs libjansson-dev libhivex-ocaml-dev ntp && \
+    apt-get -y install --reinstall ca-certificates && \
+    update-ca-certificates && \
+    git config --global http.sslCAinfo /etc/ssl/certs/ca-certificates.crt
 
 RUN git clone https://github.com/libguestfs/supermin5.git && \
     cd supermin5 && \
@@ -41,8 +44,8 @@ COPY --from=0 /usr/local /usr/local
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update && apt-get install -y curl && \
-    echo deb http://mirror.mirantis.com/stable/openstack-queens/xenial xenial main >>/etc/apt/sources.list && \
-    curl http://mirror.mirantis.com/stable/openstack-queens/xenial/archive-queens.key | apt-key add - && \
+    echo deb http://mirror.mirantis.com/stable/openstack-queens/bionic bionic main >>/etc/apt/sources.list && \
+    curl http://mirror.mirantis.com/stable/openstack-queens/bionic/archive-queens.key | apt-key add - && \
     apt-get update && \
     apt-get install -y libvirt-bin libvirt-daemon libvirt-dev bridge-utils \
                        openssl qemu-kvm \

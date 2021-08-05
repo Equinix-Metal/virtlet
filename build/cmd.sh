@@ -66,11 +66,8 @@ function get_version() {
     echo "Not in GIT repo and VERSION variable is not set."
     version='latest'
 	else
-		# Getting binary version to be embedded into broker file.
-		# Format would be LAST_TAG_IN_GIT+REVISION_COUNT_SINCE_LAST_TAG.8CHARS_FROM_CURRENT_COMMIT_SHA1.
-		DATE_TIME=$(date +%Y-%m-%d-%H-%M-%S)
     VERSION_HASH=$(git show --summary | head -1 | awk '{print substr($2,0,8)}')
-    version="v${DATE_TIME}-${VERSION_HASH}"
+    version="${VERSION_HASH}"
   fi
   echo "$version" >"${project_dir}/_output/version"
   return 0
@@ -128,6 +125,7 @@ function ensure_build_image {
     mkdir -p "${project_dir}/_output"
     get_version
     build_tag="$(cat "${project_dir}/_output/version")"
+    docker login ryugu-psie-docker-dev-local.jfrog.io
     virtlet_base_image="ryugu-psie-docker-dev-local.jfrog.io/equinix/virtlet-base:${build_tag}"
     build_base_image="ryugu-psie-docker-dev-local.jfrog.io/equinix/virtlet-build-base:${build_tag}"
     echo >&2 "Trying to pull the base image ${virtlet_base_image}..."
