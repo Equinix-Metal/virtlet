@@ -107,39 +107,21 @@ function ensure_build_image {
     if ! docker pull "${virtlet_base_image}"; then
         docker build -t "${virtlet_base_image}" \
                -f "${project_dir}/images/Dockerfile.virtlet-base" \
-               --build-arg VIRLET_BASE_TAG=build_tag "${project_dir}/images"
+               "${project_dir}/images"
+        docker push "${virtlet_base_image}"
     fi
     echo >&2 "Trying to pull the build base image ${build_base_image}..."
     if ! docker pull "${build_base_image}"; then
         docker build -t "${build_base_image}" \
                --label virtlet_image=build-base \
-               --build-arg BASE_TAG=build_tag \
+               --build-arg BASE_TAG=${build_tag} \
                -f "${project_dir}/images/Dockerfile.build-base" "${project_dir}/images"
+        docker push "${build_base_image}"
     fi
     tar -C "${project_dir}/images" -c image_skel/ qemu-build.conf Dockerfile.build |
-        docker build -t "${build_image}" -f Dockerfile.build -
-
-    if ! image_exists "${build_image}"; then
-        if ! image_exists "${build_base_image}"; then
-            if ! image_exists "${virtlet_base_image}"; then
-                echo >&2 "Trying to pull the base image ${virtlet_base_image}..."
-                if ! docker pull "${virtlet_base_image}"; then
-                    docker build -t "${virtlet_base_image}" \
-                           -f "${project_dir}/images/Dockerfile.virtlet-base" \
-                           --build-arg VIRLET_BASE_TAG=build_tag "${project_dir}/images"
-                fi
-            fi
-            echo >&2 "Trying to pull the build base image ${build_base_image}..."
-            if ! docker pull "${build_base_image}"; then
-                docker build -t "${build_base_image}" \
-                       --label virtlet_image=build-base \
-                       --build-arg BASE_TAG=build_tag \
-                       -f "${project_dir}/images/Dockerfile.build-base" "${project_dir}/images"
-            fi
-        fi
-        tar -C "${project_dir}/images" -c image_skel/ qemu-build.conf Dockerfile.build |
-            docker build -t "${build_image}" -f Dockerfile.build -
-    fi
+        docker build -t "${build_image}" --build-arg BUILD_TAG=${build_tag} \
+        -f Dockerfile.build -
+    docker push "${build_image}"
 }
 
 function get_rsync_addr {
@@ -410,8 +392,11 @@ function gobuild {
 
 function build_image_internal {
     build_internal
+    build_tag="$(cat "${project_dir}/_output/version")"
     tar -c _output -C "${project_dir}/images" image_skel/ Dockerfile.virtlet |
-        docker build -t "${virtlet_image}" -f Dockerfile.virtlet -
+        docker build -t "${virtlet_image}" --build-arg VIRLET_BASE_TAG=build_tag \
+          -f Dockerfile.virtlet -
+    docker push "${virtlet_image}"
 }
 
 function install_vendor_internal {
@@ -481,6 +466,7 @@ function build_internal {
     go build -i -o "${project_dir}/_output/flexvolume_driver" ./cmd/flexvolume_driver
     go test -i -c -o "${project_dir}/_output/virtlet-e2e-tests" ./tests/e2e
     go build -i -o "${project_dir}/_output/virtlet-longevity-tests" -ldflags "${ldflags}" ./cmd/longevity
+    get_version
 }
 
 function release_description {

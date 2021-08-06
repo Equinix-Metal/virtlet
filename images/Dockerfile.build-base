@@ -74,8 +74,7 @@ RUN mkdir -p ~/.ssh && \
 
 # Download cirros image
 RUN mkdir -p /images && \
-    curl -L https://github.com/Equinix/virtlet/releases/download/v0.8.2/cirros.img -o /images/cirros.img && \
-    echo "${CIRROS_SHA256}  /images/cirros.img" | sha256sum -c -
+    curl -L http://download.cirros-cloud.net/0.5.2/cirros-0.5.2-x86_64-disk.img -o /images/cirros.img
 
 # Install Go tooling
 RUN go get github.com/aktau/github-release && \
