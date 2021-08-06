@@ -25,8 +25,8 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/Equinix/virtlet/pkg/fs"
-	"github.com/Equinix/virtlet/pkg/utils"
+	"github.com/Equinix-Metal/virtlet/pkg/fs"
+	"github.com/Equinix-Metal/virtlet/pkg/utils"
 )
 
 const (

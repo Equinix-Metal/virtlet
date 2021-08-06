@@ -24,8 +24,8 @@ import (
 
 	"github.com/jonboulle/clockwork"
 
-	"github.com/Equinix/virtlet/pkg/metadata/fake"
-	"github.com/Equinix/virtlet/pkg/metadata/types"
+	"github.com/Equinix-Metal/virtlet/pkg/metadata/fake"
+	"github.com/Equinix-Metal/virtlet/pkg/metadata/types"
 )
 
 func TestRemovePodSandbox(t *testing.T) {

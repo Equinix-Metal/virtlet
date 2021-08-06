@@ -26,7 +26,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/Equinix/virtlet/pkg/utils"
+	"github.com/Equinix-Metal/virtlet/pkg/utils"
 	"github.com/golang/glog"
 )
 

@@ -23,7 +23,7 @@ import (
 	"os"
 	"testing"
 
-	kubeapi "k8s.io/kubernetes/pkg/kubelet/apis/cri/runtime/v1alpha2"
+	kubeapi "k8s.io/cri-api/pkg/apis/runtime/v1alpha2"
 )
 
 const (

@@ -21,8 +21,8 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/Equinix/virtlet/tests/e2e"
-	"github.com/Equinix/virtlet/tests/e2e/framework"
+	"github.com/Equinix-Metal/virtlet/tests/e2e"
+	"github.com/Equinix-Metal/virtlet/tests/e2e/framework"
 	"github.com/golang/glog"
 )
 

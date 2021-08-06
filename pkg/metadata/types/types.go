@@ -17,8 +17,8 @@ limitations under the License.
 package types
 
 import (
-	"github.com/Equinix/virtlet/pkg/network"
-	"github.com/Equinix/virtlet/pkg/utils"
+	"github.com/Equinix-Metal/virtlet/pkg/network"
+	"github.com/Equinix-Metal/virtlet/pkg/utils"
 )
 
 const (

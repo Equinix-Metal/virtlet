@@ -1,8 +1,8 @@
 package criapi
 
 import (
-	"github.com/Equinix/virtlet/pkg/utils"
-	kubeapi "k8s.io/kubernetes/pkg/kubelet/apis/cri/runtime/v1alpha2"
+	"github.com/Equinix-Metal/virtlet/pkg/utils"
+	kubeapi "k8s.io/cri-api/pkg/apis/runtime/v1alpha2"
 	"strconv"
 )
 

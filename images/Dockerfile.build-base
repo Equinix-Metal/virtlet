@@ -33,7 +33,8 @@ RUN apt-get update && \
                 iputils-ping \
                 mercurial \
                 pkg-config \
-                python-pip && \
+                python-pip \
+                rsync && \
     apt-get clean && \
     pip install mkdocs
 
@@ -50,7 +51,7 @@ RUN curl -fsSL "$GOLANG_DOWNLOAD_URL" -o golang.tar.gz \
 	&& rm golang.tar.gz
 
 ENV GOPATH /go
-ENV PATH /go/src/github.com/Equinix/virtlet/_output:$GOPATH/bin:/usr/local/go/bin:$PATH
+ENV PATH /go/src/github.com/Equinix-Metal/virtlet/_output:$GOPATH/bin:/usr/local/go/bin:$PATH
 
 RUN mkdir -p "$GOPATH/src" "$GOPATH/bin" && chmod -R 777 "$GOPATH"
 WORKDIR $GOPATH
@@ -70,7 +71,7 @@ RUN mkdir -p ~/.ssh && \
     mkdir -p /var/lib/virtlet/volumes /opt/cni/bin && \
     curl -L https://github.com/containernetworking/cni/releases/download/v0.3.0/cni-v0.3.0.tgz | \
       tar zxC /opt/cni/bin && \
-    ln -s /go/src/github.com/Equinix/virtlet/_output/vmwrapper /vmwrapper
+    ln -s /go/src/github.com/Equinix-Metal/virtlet/_output/vmwrapper /vmwrapper
 
 # Download cirros image
 RUN mkdir -p /images && \

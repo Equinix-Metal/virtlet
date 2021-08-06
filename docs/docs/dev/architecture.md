@@ -6,10 +6,10 @@ The following figure provides a general view of Virtlet architecture:
 
 Virtlet consists of the following components:
 
-* [Virtlet manager](https://github.com/Equinix/virtlet/tree/master/cmd/virtlet)
+* [Virtlet manager](https://github.com/Equinix-Metal/virtlet/tree/master/cmd/virtlet)
   which implements CRI interface for virtualization and image handling
 * [libvirt](http://libvirt.org) instance
-* [vmwrapper](https://github.com/Equinix/virtlet/tree/master/cmd/vmwrapper)
+* [vmwrapper](https://github.com/Equinix-Metal/virtlet/tree/master/cmd/vmwrapper)
   which is responsible for setting up the environment for emulator
 * the emulator, currently [qemu](http://www.qemu-project.org/) with
   KVM support (with a possibility to disable KVM)

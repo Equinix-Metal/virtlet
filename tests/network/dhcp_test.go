@@ -27,8 +27,8 @@ import (
 	cnicurrent "github.com/containernetworking/cni/pkg/types/current"
 	"github.com/vishvananda/netlink"
 
-	"github.com/Equinix/virtlet/pkg/nettools"
-	"github.com/Equinix/virtlet/pkg/network"
+	"github.com/Equinix-Metal/virtlet/pkg/nettools"
+	"github.com/Equinix-Metal/virtlet/pkg/network"
 )
 
 func TestDhcpServer(t *testing.T) {

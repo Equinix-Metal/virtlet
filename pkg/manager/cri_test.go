@@ -20,13 +20,13 @@ import (
 	"reflect"
 	"testing"
 
-	kubeapi "k8s.io/kubernetes/pkg/kubelet/apis/cri/runtime/v1alpha2"
+	kubeapi "k8s.io/cri-api/pkg/apis/runtime/v1alpha2"
 
-	"github.com/Equinix/virtlet/pkg/metadata/fake"
-	"github.com/Equinix/virtlet/pkg/metadata/types"
-	"github.com/Equinix/virtlet/pkg/network"
-	"github.com/Equinix/virtlet/tests/criapi"
-	"github.com/Equinix/virtlet/tests/gm"
+	"equinix.com/vpe/virtlet/pkg/metadata/fake"
+	"equinix.com/vpe/virtlet/pkg/metadata/types"
+	"equinix.com/vpe/virtlet/pkg/network"
+	"equinix.com/vpe/virtlet/tests/criapi"
+	"equinix.com/vpe/virtlet/tests/gm"
 )
 
 func TestConversions(t *testing.T) {

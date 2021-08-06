@@ -20,10 +20,10 @@ import (
 	libvirtxml "github.com/libvirt/libvirt-go-xml"
 	digest "github.com/opencontainers/go-digest"
 
-	"github.com/Equinix/virtlet/pkg/fs"
-	"github.com/Equinix/virtlet/pkg/metadata/types"
-	"github.com/Equinix/virtlet/pkg/utils"
-	"github.com/Equinix/virtlet/pkg/virt"
+	"github.com/Equinix-Metal/virtlet/pkg/fs"
+	"github.com/Equinix-Metal/virtlet/pkg/metadata/types"
+	"github.com/Equinix-Metal/virtlet/pkg/utils"
+	"github.com/Equinix-Metal/virtlet/pkg/virt"
 )
 
 // ImageManager describes an image info provider.

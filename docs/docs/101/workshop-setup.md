@@ -4,10 +4,10 @@
 In your shell clone the Virtlet repository and download `virtletctl` binary:
 
 ```bash
-git clone https://github.com/Equinix/virtlet.git 
+git clone https://github.com/Equinix-Metal/virtlet.git 
 chmod 600 virtlet/examples/vmkey
 
-wget https://github.com/Equinix/virtlet/releases/download/v1.4.4/virtletctl
+wget https://github.com/Equinix-Metal/virtlet/releases/download/v1.4.4/virtletctl
 chmod +x virtletctl
 
 wget https://storage.googleapis.com/kubernetes-release/release/v1.14.1/bin/linux/amd64/kubectl

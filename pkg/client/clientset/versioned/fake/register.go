@@ -19,7 +19,7 @@ limitations under the License.
 package fake
 
 import (
-	virtletv1 "github.com/Equinix/virtlet/pkg/api/virtlet.k8s/v1"
+	virtletv1 "github.com/Equinix-Metal/virtlet/pkg/api/virtlet.k8s/v1"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	runtime "k8s.io/apimachinery/pkg/runtime"
 	schema "k8s.io/apimachinery/pkg/runtime/schema"

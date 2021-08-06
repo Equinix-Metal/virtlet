@@ -19,7 +19,7 @@ package imagetranslation
 import (
 	"context"
 
-	"github.com/Equinix/virtlet/pkg/api/virtlet.k8s/v1"
+	"github.com/Equinix-Metal/virtlet/pkg/api/virtlet.k8s/v1"
 )
 
 type objectConfig struct {

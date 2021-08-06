@@ -38,11 +38,11 @@ kubectl create configmap -n kube-system virtlet-image-translations --from-file i
 
 After that, you need to get `virtletctl` command line tool (replace `N.N.N` in the command below accordingly):
 ```
-curl -SL -o virtletctl https://github.com/Equinix/virtlet/releases/download/vN.N.N/virtletctl
+curl -SL -o virtletctl https://github.com/Equinix-Metal/virtlet/releases/download/vN.N.N/virtletctl
 ```
 In case if you're using Mac OS X, you need to use this command instead:
 ```
-curl -SL -o virtletctl https://github.com/Equinix/virtlet/releases/download/vN.N.N/virtletctl.darwin
+curl -SL -o virtletctl https://github.com/Equinix-Metal/virtlet/releases/download/vN.N.N/virtletctl.darwin
 ```
 You can also use `virtletctl` from Virtlet image, see below.
 

@@ -16,7 +16,7 @@ kdc_script="dind-cluster-v${KUBE_VERSION}.sh"
 kdc_url="${KDC_BASE_LOCATION}/${KDC_VERSION}/${kdc_script}"
 kubectl="${HOME}/.kubeadm-dind-cluster/kubectl"
 BASE_LOCATION="${BASE_LOCATION:-https://raw.githubusercontent.com/Equinix/virtlet/master/}"
-RELEASE_LOCATION="${RELEASE_LOCATION:-https://github.com/Equinix/virtlet/releases/download/}"
+RELEASE_LOCATION="${RELEASE_LOCATION:-https://github.com/Equinix-Metal/virtlet/releases/download/}"
 VIRTLET_DEMO_RELEASE="${VIRTLET_DEMO_RELEASE:-}"
 VIRTLET_DEMO_BRANCH="${VIRTLET_DEMO_BRANCH:-}"
 VIRTLET_ON_MASTER="${VIRTLET_ON_MASTER:-}"
@@ -26,7 +26,7 @@ MULTI_CNI="${MULTI_CNI:-}"
 DEMO_LOG_LEVEL="${DEMO_LOG_LEVEL:-}"
 DIND_CRI="${DIND_CRI:-containerd}"
 # Convenience setting for local testing:
-# BASE_LOCATION="${HOME}/work/kubernetes/src/github.com/Equinix/virtlet"
+# BASE_LOCATION="${HOME}/work/kubernetes/src/github.com/Equinix-Metal/virtlet"
 cirros_key="demo-cirros-private-key"
 # just initialize it
 declare virtlet_release
@@ -425,7 +425,7 @@ Use 'curl http://nginx.default.svc.cluster.local' from VM console to test
 cluster networking.
 
 To clean up the cluster, use './dind-cluster-v${KUBE_VERSION}.sh clean'
-[1] https://github.com/Equinix/virtlet
+[1] https://github.com/Equinix-Metal/virtlet
 [2] https://github.com/kubernetes-sigs/kubeadm-dind-cluster
 EOF
   exit 0

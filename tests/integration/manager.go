@@ -29,11 +29,11 @@ import (
 
 	"google.golang.org/grpc"
 
-	"github.com/Equinix/virtlet/pkg/api/virtlet.k8s/v1"
-	"github.com/Equinix/virtlet/pkg/config"
-	"github.com/Equinix/virtlet/pkg/diag"
-	"github.com/Equinix/virtlet/pkg/manager"
-	"github.com/Equinix/virtlet/pkg/tapmanager"
+	"github.com/Equinix-Metal/virtlet/pkg/api/virtlet.k8s/v1"
+	"github.com/Equinix-Metal/virtlet/pkg/config"
+	"github.com/Equinix-Metal/virtlet/pkg/diag"
+	"github.com/Equinix-Metal/virtlet/pkg/manager"
+	"github.com/Equinix-Metal/virtlet/pkg/tapmanager"
 )
 
 const (

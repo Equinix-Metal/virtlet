@@ -25,8 +25,8 @@ import (
 	v1 "k8s.io/api/core/v1"
 	"k8s.io/apimachinery/pkg/runtime"
 
-	"github.com/Equinix/virtlet/pkg/config"
-	"github.com/Equinix/virtlet/pkg/version"
+	"github.com/Equinix-Metal/virtlet/pkg/config"
+	"github.com/Equinix-Metal/virtlet/pkg/version"
 )
 
 const (

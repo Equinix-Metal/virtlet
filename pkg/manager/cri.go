@@ -21,10 +21,10 @@ import (
 	"fmt"
 	"path/filepath"
 
-	kubeapi "k8s.io/kubernetes/pkg/kubelet/apis/cri/runtime/v1alpha2"
+	kubeapi "k8s.io/cri-api/pkg/apis/runtime/v1alpha2"
 
-	"github.com/Equinix/virtlet/pkg/metadata/types"
-	"github.com/Equinix/virtlet/pkg/network"
+	"equinix.com/vpe/virtlet/pkg/metadata/types"
+	"equinix.com/vpe/virtlet/pkg/network"
 )
 
 func podSandboxMetadata(in *types.PodSandboxInfo) *kubeapi.PodSandboxMetadata {

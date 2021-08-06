@@ -25,8 +25,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/Equinix/virtlet/pkg/fs"
-	testutils "github.com/Equinix/virtlet/pkg/utils/testing"
+	"github.com/Equinix-Metal/virtlet/pkg/fs"
+	testutils "github.com/Equinix-Metal/virtlet/pkg/utils/testing"
 )
 
 const pathMarker = "/__fs__/"

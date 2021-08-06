@@ -25,12 +25,12 @@ import (
 
 	"github.com/davecgh/go-spew/spew"
 	"golang.org/x/net/context"
-	kubeapi "k8s.io/kubernetes/pkg/kubelet/apis/cri/runtime/v1alpha2"
+	kubeapi "k8s.io/cri-api/pkg/apis/runtime/v1alpha2"
 
-	"github.com/Equinix/virtlet/pkg/flexvolume"
-	"github.com/Equinix/virtlet/pkg/fs"
-	"github.com/Equinix/virtlet/pkg/utils"
-	"github.com/Equinix/virtlet/tests/criapi"
+	"github.com/Equinix-Metal/virtlet/pkg/flexvolume"
+	"github.com/Equinix-Metal/virtlet/pkg/fs"
+	"github.com/Equinix-Metal/virtlet/pkg/utils"
+	"github.com/Equinix-Metal/virtlet/tests/criapi"
 )
 
 const (

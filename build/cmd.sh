@@ -5,7 +5,7 @@ set -o pipefail
 set -o errtrace
 
 CRIPROXY_DEB_URL="${CRIPROXY_DEB_URL:-https://github.com/Mirantis/criproxy/releases/download/v0.14.0/criproxy-nodeps_0.14.0_amd64.deb}"
-VIRTLET_IMAGE="${VIRTLET_IMAGE:-equinix/virtlet}"
+VIRTLET_IMAGE_REPO="${VIRTLET_IMAGE_REPO:-ryugu-psie-docker-dev-local.jfrog.io/equinix}"
 VIRTLET_SKIP_RSYNC="${VIRTLET_SKIP_RSYNC:-}"
 VIRTLET_SKIP_VENDOR="${VIRTLET_SKIP_VENDOR:-false}"
 VIRTLET_RSYNC_PORT="${VIRTLET_RSYNC_PORT:-18730}"
@@ -21,11 +21,11 @@ MKDOCS_SERVE_ADDRESS="${MKDOCS_SERVE_ADDRESS:-localhost:8042}"
 
 # Note that project_dir must not end with slash
 project_dir="$(cd "$(dirname "${BASH_SOURCE}")/.." && pwd)"
-virtlet_image="equinix/virtlet"
-remote_project_dir="/go/src/github.com/Equinix/virtlet"
-build_name="virtlet_build"
+virtlet_image="${VIRTLET_IMAGE_REPO}/virtlet"
+remote_project_dir="/go/src/github.com/Equinix-Metal/virtlet"
+build_name="virtlet-build"
 tmp_container_name="${build_name}-$(openssl rand -hex 16)"
-build_image=${build_name}:latest
+build_image="${VIRTLET_IMAGE_REPO}/${build_name}:latest"
 volume_name=virtlet_src
 rsync_git=y
 exclude=(
@@ -51,7 +51,7 @@ bindata_out="pkg/tools/bindata.go"
 bindata_dir="deploy/data"
 bindata_pkg="tools"
 ldflags=()
-go_package=github.com/Equinix/virtlet
+go_package=github.com/Equinix-Metal/virtlet
 
 function image_tags_filter {
     local tag="${1}"
@@ -100,9 +100,10 @@ function ensure_build_image {
     mkdir -p "${project_dir}/_output"
     get_version
     build_tag="$(cat "${project_dir}/_output/version")"
+    build_image="${VIRTLET_IMAGE_REPO}/${build_name}:${build_tag}"
     docker login ryugu-psie-docker-dev-local.jfrog.io
-    virtlet_base_image="ryugu-psie-docker-dev-local.jfrog.io/equinix/virtlet-base:${build_tag}"
-    build_base_image="ryugu-psie-docker-dev-local.jfrog.io/equinix/virtlet-build-base:${build_tag}"
+    virtlet_base_image="${VIRTLET_IMAGE_REPO}/virtlet-base:${build_tag}"
+    build_base_image="${VIRTLET_IMAGE_REPO}/virtlet-build-base:${build_tag}"
     echo >&2 "Trying to pull the base image ${virtlet_base_image}..."
     if ! docker pull "${virtlet_base_image}"; then
         docker build -t "${virtlet_base_image}" \
@@ -121,7 +122,9 @@ function ensure_build_image {
     tar -C "${project_dir}/images" -c image_skel/ qemu-build.conf Dockerfile.build |
         docker build -t "${build_image}" --build-arg BUILD_TAG=${build_tag} \
         -f Dockerfile.build -
+    docker tag "${build_image}" "${VIRTLET_IMAGE_REPO}/${build_name}:latest"
     docker push "${build_image}"
+    docker push "${VIRTLET_IMAGE_REPO}/${build_name}:latest"
 }
 
 function get_rsync_addr {
@@ -199,6 +202,7 @@ function ensure_build_container {
         fi
     fi
     if [[ ! ${VIRTLET_SKIP_RSYNC} ]]; then
+        get_rsync_addr
         RSYNC_ADDR="$(cat "${project_dir}/_output/rsync_addr")"
     fi
 }
@@ -277,11 +281,12 @@ function copy_dind_internal {
 }
 
 function kvm_ok {
+    build_tag="$(cat "${project_dir}/_output/version")"
     # The check is done inside the virtlet node container because it
     # has proper /lib/modules from the docker host. Also, it'll have
     # to use the virtlet image later anyway.
     # Use kube-master node as all of the DIND nodes in the cluster are similar
-    if ! docker exec kube-master docker run --privileged --rm -v /lib/modules:/lib/modules "${VIRTLET_IMAGE}" kvm-ok; then
+    if ! docker exec kube-master docker run --privileged --rm -v /lib/modules:/lib/modules "${virtlet_image}:${build_tag}" kvm-ok; then
         return 1
     fi
 }
@@ -394,15 +399,17 @@ function build_image_internal {
     build_internal
     build_tag="$(cat "${project_dir}/_output/version")"
     tar -c _output -C "${project_dir}/images" image_skel/ Dockerfile.virtlet |
-        docker build -t "${virtlet_image}" --build-arg VIRLET_BASE_TAG=build_tag \
+        docker build -t "${virtlet_image}:${build_tag}" --build-arg VIRLET_BASE_TAG=build_tag \
           -f Dockerfile.virtlet -
-    docker push "${virtlet_image}"
+    docker push "${virtlet_image}:${build_tag}"
+    docker tag "${virtlet_image}:${build_tag}" "${virtlet_image}:latest"
+    docker push "${virtlet_image}:latest"
 }
 
 function install_vendor_internal {
-    if [ ! -d vendor ]; then
-        glide install --strip-vendor
-    fi
+#    if [ ! -d vendor ]; then
+#        glide install --strip-vendor
+#    fi
 }
 
 function run_tests_internal {
@@ -539,7 +546,7 @@ function update_generated_docs_internal {
 function update_generated_internal {
   install_vendor_internal
   vendor/k8s.io/code-generator/generate-groups.sh all \
-    github.com/Equinix/virtlet/pkg/client github.com/Equinix/virtlet/pkg/api \
+    github.com/Equinix-Metal/virtlet/pkg/client github.com/Equinix-Metal/virtlet/pkg/api \
     virtlet.k8s:v1 \
     --go-header-file "build/custom-boilerplate.go.txt"
   # fix import url case issues

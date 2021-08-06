@@ -45,8 +45,8 @@ import (
 	"github.com/golang/glog"
 	"github.com/vishvananda/netlink"
 
-	"github.com/Equinix/virtlet/pkg/network"
-	"github.com/Equinix/virtlet/pkg/utils"
+	"github.com/Equinix-Metal/virtlet/pkg/network"
+	"github.com/Equinix-Metal/virtlet/pkg/utils"
 )
 
 // verify if device is pci virtual function (in the same way as does

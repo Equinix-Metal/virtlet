@@ -24,7 +24,7 @@ import (
 
 	"github.com/boltdb/bolt"
 
-	"github.com/Equinix/virtlet/pkg/metadata/types"
+	"github.com/Equinix-Metal/virtlet/pkg/metadata/types"
 )
 
 var (

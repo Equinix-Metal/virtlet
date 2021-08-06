@@ -21,7 +21,7 @@ package externalversions
 import (
 	"fmt"
 
-	v1 "github.com/Equinix/virtlet/pkg/api/virtlet.k8s/v1"
+	v1 "github.com/Equinix-Metal/virtlet/pkg/api/virtlet.k8s/v1"
 	schema "k8s.io/apimachinery/pkg/runtime/schema"
 	cache "k8s.io/client-go/tools/cache"
 )

@@ -1,5 +1,5 @@
 ARG VIRLET_BASE_TAG
-FROM ryugu-psie-docker-dev-local.jfrog.io/equinix/virtlet-base:${VIRLET_BASE_TAG}
+FROM ryugu-psie-docker-dev-local.jfrog.io/equinix/virtlet-build:${VIRLET_BASE_TAG}
 MAINTAINER Brandon Feng <bfeng@equinix.com>
 
 LABEL virtlet.image="virtlet"

@@ -21,7 +21,7 @@ import (
 
 	libvirtxml "github.com/libvirt/libvirt-go-xml"
 
-	"github.com/Equinix/virtlet/pkg/metadata/types"
+	"github.com/Equinix-Metal/virtlet/pkg/metadata/types"
 )
 
 func TestDiskPath(t *testing.T) {

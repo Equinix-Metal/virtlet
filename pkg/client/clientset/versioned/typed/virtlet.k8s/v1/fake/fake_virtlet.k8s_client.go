@@ -19,7 +19,7 @@ limitations under the License.
 package fake
 
 import (
-	v1 "github.com/Equinix/virtlet/pkg/client/clientset/versioned/typed/virtlet.k8s/v1"
+	v1 "github.com/Equinix-Metal/virtlet/pkg/client/clientset/versioned/typed/virtlet.k8s/v1"
 	rest "k8s.io/client-go/rest"
 	testing "k8s.io/client-go/testing"
 )

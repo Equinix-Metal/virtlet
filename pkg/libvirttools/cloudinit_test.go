@@ -32,11 +32,11 @@ import (
 	"github.com/davecgh/go-spew/spew"
 	"github.com/ghodss/yaml"
 
-	"github.com/Equinix/virtlet/pkg/metadata/types"
-	"github.com/Equinix/virtlet/pkg/network"
-	"github.com/Equinix/virtlet/pkg/utils"
-	testutils "github.com/Equinix/virtlet/pkg/utils/testing"
-	"github.com/Equinix/virtlet/tests/gm"
+	"github.com/Equinix-Metal/virtlet/pkg/metadata/types"
+	"github.com/Equinix-Metal/virtlet/pkg/network"
+	"github.com/Equinix-Metal/virtlet/pkg/utils"
+	testutils "github.com/Equinix-Metal/virtlet/pkg/utils/testing"
+	"github.com/Equinix-Metal/virtlet/tests/gm"
 	libvirtxml "github.com/libvirt/libvirt-go-xml"
 )
 

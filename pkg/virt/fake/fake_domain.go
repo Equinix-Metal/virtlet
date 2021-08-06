@@ -25,8 +25,8 @@ import (
 
 	libvirtxml "github.com/libvirt/libvirt-go-xml"
 
-	testutils "github.com/Equinix/virtlet/pkg/utils/testing"
-	"github.com/Equinix/virtlet/pkg/virt"
+	testutils "github.com/Equinix-Metal/virtlet/pkg/utils/testing"
+	"github.com/Equinix-Metal/virtlet/pkg/virt"
 )
 
 func mustMarshal(d libvirtxml.Document) string {

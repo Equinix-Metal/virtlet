@@ -23,9 +23,9 @@ import (
 	sync "sync"
 	time "time"
 
-	versioned "github.com/Equinix/virtlet/pkg/client/clientset/versioned"
-	internalinterfaces "github.com/Equinix/virtlet/pkg/client/informers/externalversions/internalinterfaces"
-	virtlet_k8s "github.com/Equinix/virtlet/pkg/client/informers/externalversions/virtlet.k8s"
+	versioned "github.com/Equinix-Metal/virtlet/pkg/client/clientset/versioned"
+	internalinterfaces "github.com/Equinix-Metal/virtlet/pkg/client/informers/externalversions/internalinterfaces"
+	virtlet_k8s "github.com/Equinix-Metal/virtlet/pkg/client/informers/externalversions/virtlet.k8s"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	runtime "k8s.io/apimachinery/pkg/runtime"
 	schema "k8s.io/apimachinery/pkg/runtime/schema"

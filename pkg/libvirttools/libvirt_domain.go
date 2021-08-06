@@ -23,7 +23,7 @@ import (
 	libvirt "github.com/libvirt/libvirt-go"
 	libvirtxml "github.com/libvirt/libvirt-go-xml"
 
-	"github.com/Equinix/virtlet/pkg/virt"
+	"github.com/Equinix-Metal/virtlet/pkg/virt"
 )
 
 type libvirtDomainConnection struct {

@@ -33,8 +33,8 @@ import (
 	"github.com/golang/glog"
 	"github.com/vishvananda/netlink"
 
-	"github.com/Equinix/virtlet/pkg/dhcp"
-	"github.com/Equinix/virtlet/pkg/network"
+	"github.com/Equinix-Metal/virtlet/pkg/dhcp"
+	"github.com/Equinix-Metal/virtlet/pkg/network"
 )
 
 const (

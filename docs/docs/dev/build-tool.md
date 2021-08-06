@@ -1,7 +1,7 @@
 # build/cmd.sh
 
 `build/cmd.sh` script helps automating usage of docker build
-container using [Dockerfile.build](https://github.com/Equinix/virtlet/blob/master/images/Dockerfile.build).
+container using [Dockerfile.build](https://github.com/Equinix-Metal/virtlet/blob/master/images/Dockerfile.build).
 
 ## Script usage
 
@@ -105,7 +105,7 @@ the binaries in local `_output` directory.
 
 Updates generated binary assets. Currently needed if you edit files
 under
-[deploy/data](https://github.com/Equinix/virtlet/tree/master/deploy/data)
+[deploy/data](https://github.com/Equinix-Metal/virtlet/tree/master/deploy/data)
 directory.
 
 ### update-generated-docs
