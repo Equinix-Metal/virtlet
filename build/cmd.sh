@@ -5,6 +5,7 @@ set -o pipefail
 set -o errtrace
 
 CRIPROXY_DEB_URL="${CRIPROXY_DEB_URL:-https://github.com/Mirantis/criproxy/releases/download/v0.14.0/criproxy-nodeps_0.14.0_amd64.deb}"
+VIRTLET_IMAGE_REPO="${VIRTLET_IMAGE_REPO:-ryugu-psie-docker-dev-local.jfrog.io/equinix}"
 VIRTLET_IMAGE="${VIRTLET_IMAGE:-equinix/virtlet}"
 VIRTLET_SKIP_RSYNC="${VIRTLET_SKIP_RSYNC:-}"
 VIRTLET_SKIP_VENDOR="${VIRTLET_SKIP_VENDOR:-false}"
@@ -21,7 +22,7 @@ MKDOCS_SERVE_ADDRESS="${MKDOCS_SERVE_ADDRESS:-localhost:8042}"
 
 # Note that project_dir must not end with slash
 project_dir="$(cd "$(dirname "${BASH_SOURCE}")/.." && pwd)"
-virtlet_image="equinix/virtlet"
+virtlet_image="${VIRTLET_IMAGE_REPO}/virtlet"
 remote_project_dir="/go/src/github.com/Equinix/virtlet"
 build_name="virtlet_build"
 tmp_container_name="${build_name}-$(openssl rand -hex 16)"
@@ -100,6 +101,7 @@ function ensure_build_image {
     mkdir -p "${project_dir}/_output"
     get_version
     build_tag="$(cat "${project_dir}/_output/version")"
+    build_image="ryugu-psie-docker-dev-local.jfrog.io/equinix/${build_name}:${build_tag}"
     docker login ryugu-psie-docker-dev-local.jfrog.io
     virtlet_base_image="ryugu-psie-docker-dev-local.jfrog.io/equinix/virtlet-base:${build_tag}"
     build_base_image="ryugu-psie-docker-dev-local.jfrog.io/equinix/virtlet-build-base:${build_tag}"
@@ -121,7 +123,9 @@ function ensure_build_image {
     tar -C "${project_dir}/images" -c image_skel/ qemu-build.conf Dockerfile.build |
         docker build -t "${build_image}" --build-arg BUILD_TAG=${build_tag} \
         -f Dockerfile.build -
+    docker tag "${build_image}" "ryugu-psie-docker-dev-local.jfrog.io/equinix/${build_name}:latest"
     docker push "${build_image}"
+    docker push "ryugu-psie-docker-dev-local.jfrog.io/equinix/${build_name}:latest"
 }
 
 function get_rsync_addr {
@@ -394,9 +398,11 @@ function build_image_internal {
     build_internal
     build_tag="$(cat "${project_dir}/_output/version")"
     tar -c _output -C "${project_dir}/images" image_skel/ Dockerfile.virtlet |
-        docker build -t "${virtlet_image}" --build-arg VIRLET_BASE_TAG=build_tag \
+        docker build -t "${virtlet_image}:${build_tag}" --build-arg VIRLET_BASE_TAG=build_tag \
           -f Dockerfile.virtlet -
-    docker push "${virtlet_image}"
+    docker push "${virtlet_image}:${build_tag}"
+    docker tag "${virtlet_image}:${build_tag}" "${virtlet_image}:latest"
+    docker push "${virtlet_image}:latest"
 }
 
 function install_vendor_internal {

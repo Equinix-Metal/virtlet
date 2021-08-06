@@ -1,5 +1,5 @@
 ARG BUILD_TAG
-FROM ryugu-psie-docker-dev-local.jfrog.io/equinix/virtlet-build:${BUILD_TAG}
+FROM ryugu-psie-docker-dev-local.jfrog.io/equinix/virtlet-build-base:${BUILD_TAG}
 MAINTAINER Brandon Feng <bfeng@equinix.com>
 
 LABEL virtlet.image="build"
