@@ -33,7 +33,8 @@ RUN apt-get update && \
                 iputils-ping \
                 mercurial \
                 pkg-config \
-                python-pip && \
+                python-pip \
+                rsync && \
     apt-get clean && \
     pip install mkdocs
 

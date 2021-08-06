@@ -6,7 +6,6 @@ set -o errtrace
 
 CRIPROXY_DEB_URL="${CRIPROXY_DEB_URL:-https://github.com/Mirantis/criproxy/releases/download/v0.14.0/criproxy-nodeps_0.14.0_amd64.deb}"
 VIRTLET_IMAGE_REPO="${VIRTLET_IMAGE_REPO:-ryugu-psie-docker-dev-local.jfrog.io/equinix}"
-VIRTLET_IMAGE="${VIRTLET_IMAGE:-equinix/virtlet}"
 VIRTLET_SKIP_RSYNC="${VIRTLET_SKIP_RSYNC:-}"
 VIRTLET_SKIP_VENDOR="${VIRTLET_SKIP_VENDOR:-false}"
 VIRTLET_RSYNC_PORT="${VIRTLET_RSYNC_PORT:-18730}"
@@ -26,7 +25,7 @@ virtlet_image="${VIRTLET_IMAGE_REPO}/virtlet"
 remote_project_dir="/go/src/github.com/Equinix/virtlet"
 build_name="virtlet-build"
 tmp_container_name="${build_name}-$(openssl rand -hex 16)"
-build_image=${build_name}:latest
+build_image="${VIRTLET_IMAGE_REPO}/${build_name}:latest"
 volume_name=virtlet_src
 rsync_git=y
 exclude=(
@@ -101,10 +100,10 @@ function ensure_build_image {
     mkdir -p "${project_dir}/_output"
     get_version
     build_tag="$(cat "${project_dir}/_output/version")"
-    build_image="ryugu-psie-docker-dev-local.jfrog.io/equinix/${build_name}:${build_tag}"
+    build_image="${VIRTLET_IMAGE_REPO}/${build_name}:${build_tag}"
     docker login ryugu-psie-docker-dev-local.jfrog.io
-    virtlet_base_image="ryugu-psie-docker-dev-local.jfrog.io/equinix/virtlet-base:${build_tag}"
-    build_base_image="ryugu-psie-docker-dev-local.jfrog.io/equinix/virtlet-build-base:${build_tag}"
+    virtlet_base_image="${VIRTLET_IMAGE_REPO}/virtlet-base:${build_tag}"
+    build_base_image="${VIRTLET_IMAGE_REPO}/virtlet-build-base:${build_tag}"
     echo >&2 "Trying to pull the base image ${virtlet_base_image}..."
     if ! docker pull "${virtlet_base_image}"; then
         docker build -t "${virtlet_base_image}" \
@@ -123,9 +122,9 @@ function ensure_build_image {
     tar -C "${project_dir}/images" -c image_skel/ qemu-build.conf Dockerfile.build |
         docker build -t "${build_image}" --build-arg BUILD_TAG=${build_tag} \
         -f Dockerfile.build -
-    docker tag "${build_image}" "ryugu-psie-docker-dev-local.jfrog.io/equinix/${build_name}:latest"
+    docker tag "${build_image}" "${VIRTLET_IMAGE_REPO}/${build_name}:latest"
     docker push "${build_image}"
-    docker push "ryugu-psie-docker-dev-local.jfrog.io/equinix/${build_name}:latest"
+    docker push "${VIRTLET_IMAGE_REPO}/${build_name}:latest"
 }
 
 function get_rsync_addr {
@@ -282,11 +281,12 @@ function copy_dind_internal {
 }
 
 function kvm_ok {
+    build_tag="$(cat "${project_dir}/_output/version")"
     # The check is done inside the virtlet node container because it
     # has proper /lib/modules from the docker host. Also, it'll have
     # to use the virtlet image later anyway.
     # Use kube-master node as all of the DIND nodes in the cluster are similar
-    if ! docker exec kube-master docker run --privileged --rm -v /lib/modules:/lib/modules "${VIRTLET_IMAGE}" kvm-ok; then
+    if ! docker exec kube-master docker run --privileged --rm -v /lib/modules:/lib/modules "${virtlet_image}:${build_tag}" kvm-ok; then
         return 1
     fi
 }
