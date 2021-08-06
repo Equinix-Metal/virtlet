@@ -24,7 +24,7 @@ MKDOCS_SERVE_ADDRESS="${MKDOCS_SERVE_ADDRESS:-localhost:8042}"
 project_dir="$(cd "$(dirname "${BASH_SOURCE}")/.." && pwd)"
 virtlet_image="${VIRTLET_IMAGE_REPO}/virtlet"
 remote_project_dir="/go/src/github.com/Equinix/virtlet"
-build_name="virtlet_build"
+build_name="virtlet-build"
 tmp_container_name="${build_name}-$(openssl rand -hex 16)"
 build_image=${build_name}:latest
 volume_name=virtlet_src
@@ -203,6 +203,7 @@ function ensure_build_container {
         fi
     fi
     if [[ ! ${VIRTLET_SKIP_RSYNC} ]]; then
+        get_rsync_addr
         RSYNC_ADDR="$(cat "${project_dir}/_output/rsync_addr")"
     fi
 }

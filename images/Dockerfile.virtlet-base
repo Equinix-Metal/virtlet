@@ -13,7 +13,7 @@ RUN apt-get -y update && \
     apt-add-repository ppa:git-core/ppa && \
     apt-get -y update && \
     apt-get -y install git git-lfs libjansson-dev libhivex-ocaml-dev ntp && \
-    apt-get -y install supermin libguestfs-tools && \
+    apt-get -y install supermin libguestfs-tools rsync && \
     apt-get -y install --reinstall ca-certificates && \
     update-ca-certificates && \
     git config --global http.sslCAinfo /etc/ssl/certs/ca-certificates.crt
