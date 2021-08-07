@@ -19,9 +19,9 @@ package manager
 import (
 	"github.com/jonboulle/clockwork"
 	"golang.org/x/net/context"
-	kubeapi "k8s.io/kubernetes/pkg/kubelet/apis/cri/runtime/v1alpha2"
+	kubeapi "k8s.io/kubelet/apis/cri/runtime/v1alpha2"
 
-	"github.com/Equinix-Metal/virtlet/pkg/image"
+	"equinix.com/vpe/virtlet/pkg/image"
 )
 
 // VirtletImageService handles CRI image service calls.

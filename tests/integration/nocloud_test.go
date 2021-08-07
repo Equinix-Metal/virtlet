@@ -20,7 +20,7 @@ import (
 	"reflect"
 	"testing"
 
-	kubeapi "k8s.io/kubernetes/pkg/kubelet/apis/cri/runtime/v1alpha2"
+	kubeapi "k8s.io/kubelet/apis/cri/runtime/v1alpha2"
 
 	"github.com/Equinix-Metal/virtlet/pkg/utils"
 	testutils "github.com/Equinix-Metal/virtlet/pkg/utils/testing"

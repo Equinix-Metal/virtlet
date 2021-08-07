@@ -26,13 +26,13 @@ import (
 	"github.com/golang/glog"
 	"github.com/jonboulle/clockwork"
 	"golang.org/x/net/context"
-	kubeapi "k8s.io/kubernetes/pkg/kubelet/apis/cri/runtime/v1alpha2"
+	kubeapi "k8s.io/kubelet/apis/cri/runtime/v1alpha2"
 
-	"github.com/Equinix-Metal/virtlet/pkg/cni"
-	"github.com/Equinix-Metal/virtlet/pkg/libvirttools"
-	"github.com/Equinix-Metal/virtlet/pkg/metadata"
-	"github.com/Equinix-Metal/virtlet/pkg/metadata/types"
-	"github.com/Equinix-Metal/virtlet/pkg/tapmanager"
+	"equinix.com/vpe/virtlet/pkg/cni"
+	"equinix.com/vpe/virtlet/pkg/libvirttools"
+	"equinix.com/vpe/virtlet/pkg/metadata"
+	"equinix.com/vpe/virtlet/pkg/metadata/types"
+	"equinix.com/vpe/virtlet/pkg/tapmanager"
 )
 
 const (

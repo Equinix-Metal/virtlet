@@ -407,9 +407,9 @@ function build_image_internal {
 }
 
 function install_vendor_internal {
-    if [ ! -d vendor ]; then
-        glide install --strip-vendor
-    fi
+#    if [ ! -d vendor ]; then
+#        glide install --strip-vendor
+#    fi
 }
 
 function run_tests_internal {

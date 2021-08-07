@@ -27,7 +27,7 @@ import (
 
 	"github.com/golang/glog"
 	knet "k8s.io/apimachinery/pkg/util/net"
-	"k8s.io/kubernetes/pkg/kubelet/server/streaming"
+	"k8s.io/kubernetes/pkg/kubelet/cri/streaming"
 )
 
 // Server implements streaming.Runtime
