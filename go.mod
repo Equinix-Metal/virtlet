@@ -50,4 +50,7 @@ replace equinix.com/vpe/version => ./pkg/version
 
 replace equinix.com/vpe/virt => ./pkg/virt
 
-require github.com/Equinix-Metal/virtlet v1.5.2-0.20210807010419-342346535dc5 // indirect
+require (
+	github.com/Equinix-Metal/virtlet v1.5.2-0.20210807010419-342346535dc5 // indirect
+	k8s.io/api v0.22.0 // indirect
+)
