@@ -27,16 +27,16 @@ import (
 	flag "github.com/spf13/pflag"
 	"k8s.io/client-go/tools/clientcmd"
 
-	"github.com/Equinix/virtlet/pkg/api/virtlet.k8s/v1"
-	"github.com/Equinix/virtlet/pkg/cni"
-	"github.com/Equinix/virtlet/pkg/config"
-	"github.com/Equinix/virtlet/pkg/diag"
-	"github.com/Equinix/virtlet/pkg/fs"
-	"github.com/Equinix/virtlet/pkg/manager"
-	"github.com/Equinix/virtlet/pkg/nsfix"
-	"github.com/Equinix/virtlet/pkg/tapmanager"
-	"github.com/Equinix/virtlet/pkg/utils"
-	"github.com/Equinix/virtlet/pkg/version"
+	"github.com/Equinix-Metal/virtlet/pkg/api/virtlet.k8s/v1"
+	"github.com/Equinix-Metal/virtlet/pkg/cni"
+	"github.com/Equinix-Metal/virtlet/pkg/config"
+	"github.com/Equinix-Metal/virtlet/pkg/diag"
+	"github.com/Equinix-Metal/virtlet/pkg/fs"
+	"github.com/Equinix-Metal/virtlet/pkg/manager"
+	"github.com/Equinix-Metal/virtlet/pkg/nsfix"
+	"github.com/Equinix-Metal/virtlet/pkg/tapmanager"
+	"github.com/Equinix-Metal/virtlet/pkg/utils"
+	"github.com/Equinix-Metal/virtlet/pkg/version"
 )
 
 const (

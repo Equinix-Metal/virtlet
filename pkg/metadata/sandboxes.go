@@ -25,7 +25,7 @@ import (
 	"github.com/boltdb/bolt"
 	"k8s.io/apimachinery/pkg/fields"
 
-	"github.com/Equinix/virtlet/pkg/metadata/types"
+	"github.com/Equinix-Metal/virtlet/pkg/metadata/types"
 )
 
 var (

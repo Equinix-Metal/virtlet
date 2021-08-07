@@ -10,4 +10,4 @@ a base source of rules for this project.
 If it's possible please:
 * follow rules listed in [code review guidelines](https://github.com/golang/go/wiki/CodeReviewComments)
 * remember that any newly added exported from package (by using capitalized name) function, structure, interface, has to have doc comment
-* consider adding issue to our [issue tracker](https://github.com/Equinix/virtlet/issues) if you will find any deviation from this rules in our existing code
+* consider adding issue to our [issue tracker](https://github.com/Equinix-Metal/virtlet/issues) if you will find any deviation from this rules in our existing code

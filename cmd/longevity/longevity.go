@@ -19,8 +19,8 @@ package main
 import (
 	"flag"
 
-	"github.com/Equinix/virtlet/tests/e2e/framework"
-	"github.com/Equinix/virtlet/tests/longevity"
+	"github.com/Equinix-Metal/virtlet/tests/e2e/framework"
+	"github.com/Equinix-Metal/virtlet/tests/longevity"
 	"github.com/golang/glog"
 )
 

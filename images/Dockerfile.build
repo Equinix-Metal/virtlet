@@ -4,8 +4,8 @@ MAINTAINER Brandon Feng <bfeng@equinix.com>
 
 LABEL virtlet.image="build"
 
-RUN mkdir -p /go/src/github.com/Equinix/virtlet
-WORKDIR /go/src/github.com/Equinix/virtlet
+RUN mkdir -p /go/src/github.com/Equinix-Metal/virtlet
+WORKDIR /go/src/github.com/Equinix-Metal/virtlet
 
 COPY image_skel /.
 # this conf file runs the emulator as root which is ok for

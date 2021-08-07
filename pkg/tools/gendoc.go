@@ -23,7 +23,7 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"github.com/Equinix/virtlet/pkg/config"
+	"github.com/Equinix-Metal/virtlet/pkg/config"
 )
 
 // genDocCommand is used to generate markdown documentation for

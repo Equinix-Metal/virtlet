@@ -24,9 +24,9 @@ import (
 	"github.com/docker/distribution/reference"
 	digest "github.com/opencontainers/go-digest"
 
-	"github.com/Equinix/virtlet/pkg/image"
-	"github.com/Equinix/virtlet/pkg/metadata/types"
-	testutils "github.com/Equinix/virtlet/pkg/utils/testing"
+	"github.com/Equinix-Metal/virtlet/pkg/image"
+	"github.com/Equinix-Metal/virtlet/pkg/metadata/types"
+	testutils "github.com/Equinix-Metal/virtlet/pkg/utils/testing"
 )
 
 const (

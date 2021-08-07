@@ -28,11 +28,11 @@ import (
 	"golang.org/x/net/context"
 	kubeapi "k8s.io/kubernetes/pkg/kubelet/apis/cri/runtime/v1alpha2"
 
-	"github.com/Equinix/virtlet/pkg/cni"
-	"github.com/Equinix/virtlet/pkg/libvirttools"
-	"github.com/Equinix/virtlet/pkg/metadata"
-	"github.com/Equinix/virtlet/pkg/metadata/types"
-	"github.com/Equinix/virtlet/pkg/tapmanager"
+	"github.com/Equinix-Metal/virtlet/pkg/cni"
+	"github.com/Equinix-Metal/virtlet/pkg/libvirttools"
+	"github.com/Equinix-Metal/virtlet/pkg/metadata"
+	"github.com/Equinix-Metal/virtlet/pkg/metadata/types"
+	"github.com/Equinix-Metal/virtlet/pkg/tapmanager"
 )
 
 const (

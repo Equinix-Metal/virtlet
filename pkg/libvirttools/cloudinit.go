@@ -36,11 +36,11 @@ import (
 	"github.com/kballard/go-shellquote"
 	libvirtxml "github.com/libvirt/libvirt-go-xml"
 
-	"github.com/Equinix/virtlet/pkg/flexvolume"
-	"github.com/Equinix/virtlet/pkg/fs"
-	"github.com/Equinix/virtlet/pkg/metadata/types"
-	"github.com/Equinix/virtlet/pkg/network"
-	"github.com/Equinix/virtlet/pkg/utils"
+	"github.com/Equinix-Metal/virtlet/pkg/flexvolume"
+	"github.com/Equinix-Metal/virtlet/pkg/fs"
+	"github.com/Equinix-Metal/virtlet/pkg/metadata/types"
+	"github.com/Equinix-Metal/virtlet/pkg/network"
+	"github.com/Equinix-Metal/virtlet/pkg/utils"
 )
 
 const (

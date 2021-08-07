@@ -32,17 +32,17 @@ import (
 	"k8s.io/apimachinery/pkg/runtime"
 	fakekube "k8s.io/client-go/kubernetes/fake"
 
-	"github.com/Equinix/virtlet/pkg/flexvolume"
-	"github.com/Equinix/virtlet/pkg/fs"
-	fakefs "github.com/Equinix/virtlet/pkg/fs/fake"
-	"github.com/Equinix/virtlet/pkg/metadata"
-	fakemeta "github.com/Equinix/virtlet/pkg/metadata/fake"
-	"github.com/Equinix/virtlet/pkg/metadata/types"
-	"github.com/Equinix/virtlet/pkg/utils"
-	fakeutils "github.com/Equinix/virtlet/pkg/utils/fake"
-	testutils "github.com/Equinix/virtlet/pkg/utils/testing"
-	"github.com/Equinix/virtlet/pkg/virt/fake"
-	"github.com/Equinix/virtlet/tests/gm"
+	"github.com/Equinix-Metal/virtlet/pkg/flexvolume"
+	"github.com/Equinix-Metal/virtlet/pkg/fs"
+	fakefs "github.com/Equinix-Metal/virtlet/pkg/fs/fake"
+	"github.com/Equinix-Metal/virtlet/pkg/metadata"
+	fakemeta "github.com/Equinix-Metal/virtlet/pkg/metadata/fake"
+	"github.com/Equinix-Metal/virtlet/pkg/metadata/types"
+	"github.com/Equinix-Metal/virtlet/pkg/utils"
+	fakeutils "github.com/Equinix-Metal/virtlet/pkg/utils/fake"
+	testutils "github.com/Equinix-Metal/virtlet/pkg/utils/testing"
+	"github.com/Equinix-Metal/virtlet/pkg/virt/fake"
+	"github.com/Equinix-Metal/virtlet/tests/gm"
 )
 
 const (

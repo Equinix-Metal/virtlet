@@ -60,7 +60,7 @@ restore_images_and_vendor: &restore_images_and_vendor
     if [[ -f _output/vendor.tar ]]; then
       build/portforward.sh 18730&
       build/cmd.sh start-build-container
-      docker exec -i virtlet-build tar -C /go/src/github.com/Equinix/virtlet -xv <_output/vendor.tar
+      docker exec -i virtlet-build tar -C /go/src/github.com/Equinix-Metal/virtlet -xv <_output/vendor.tar
     fi
 
 extract_binaries_from_the_image: &extract_binaries_from_the_image
@@ -278,7 +278,7 @@ jobs:
         command: |
           if [[ ! -f _output/vendor.tar ]]; then
             mkdir -p _output
-            docker exec virtlet-build tar -C /go/src/github.com/Equinix/virtlet -c vendor >_output/vendor.tar
+            docker exec virtlet-build tar -C /go/src/github.com/Equinix-Metal/virtlet -c vendor >_output/vendor.tar
           fi
     - save_cache:
         name: Save vendor cache
@@ -333,7 +333,7 @@ jobs:
         # needed by integration tests
         - vmwrapper
     - store_artifacts:
-        path: /go/src/github.com/Equinix/virtlet/_output
+        path: /go/src/github.com/Equinix-Metal/virtlet/_output
         destination: virtlet
 
   test:
@@ -428,7 +428,7 @@ jobs:
           build/portforward.sh 18730&
           git config --global user.email bot@virtlet.cloud
           git config --global user.name virtlet-bot
-          git fetch -f https://github.com/Equinix/virtlet.git docs:docs
+          git fetch -f https://github.com/Equinix-Metal/virtlet.git docs:docs
           build/cmd.sh build-docs
           if [[ ${CIRCLE_BRANCH:-} != ${DOCS_SOURCE_BRANCH} ]]; then
             echo >&2 "Not updating docs branch: current branch is ${CIRCLE_BRANCH:-} not ${DOCS_SOURCE_BRANCH}"
@@ -436,7 +436,7 @@ jobs:
             echo >&2 "Not updating docs branch: missing GITHUB_TOKEN env var"
           else
             # if the docs didn't change, this push will do nothing
-            git push https://${GITHUB_TOKEN}@github.com/Equinix/virtlet.git docs:docs
+            git push https://${GITHUB_TOKEN}@github.com/Equinix-Metal/virtlet.git docs:docs
           fi
           tar -czf /tmp/docs.tar.gz _docs
     - store_artifacts:
@@ -462,7 +462,7 @@ jobs:
         command: |
           build/portforward.sh 18730&
           build/cmd.sh start-build-container
-          docker cp _output virtlet-build:/go/src/github.com/Equinix/virtlet/
+          docker cp _output virtlet-build:/go/src/github.com/Equinix-Metal/virtlet/
           build/cmd.sh release "${CIRCLE_TAG}"
 
 workflows:

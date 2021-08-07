@@ -29,8 +29,8 @@ import (
 	"k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 
-	"github.com/Equinix/virtlet/tests/e2e/framework"
-	. "github.com/Equinix/virtlet/tests/e2e/ginkgo-ext"
+	"github.com/Equinix-Metal/virtlet/tests/e2e/framework"
+	. "github.com/Equinix-Metal/virtlet/tests/e2e/ginkgo-ext"
 )
 
 const (

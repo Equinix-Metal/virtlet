@@ -1,7 +1,7 @@
 ## Deploying Virtlet as a DaemonSet on kubeadm-dind-cluster
 
 The steps described here are performed automatically by
-[demo.sh](https://github.com/Equinix/virtlet/blob/master/deploy/demo.sh) script.
+[demo.sh](https://github.com/Equinix-Metal/virtlet/blob/master/deploy/demo.sh) script.
 
 1. Start [kubeadm-dind-cluster](https://github.com/kubernetes-sigs/kubeadm-dind-cluster)
    with Kubernetes version 1.14 (you're not required to download it to your home directory).
@@ -39,12 +39,12 @@ The steps described here are performed automatically by
    
         # for Linux
         curl -SL -o virtletctl \
-          https://github.com/Equinix/virtlet/releases/download/vN.N.N/virtletctl
+          https://github.com/Equinix-Metal/virtlet/releases/download/vN.N.N/virtletctl
         chmod +x virtletctl
 
         # for Mac OS X
         curl -SL -o virtletctl \
-          https://github.com/Equinix/virtlet/releases/download/vN.N.N/virtletctl.darwin
+          https://github.com/Equinix-Metal/virtlet/releases/download/vN.N.N/virtletctl.darwin
         chmod +x virtletctl
 
 1. Deploy Virtlet DaemonSet and related objects:
@@ -59,7 +59,7 @@ The steps described here are performed automatically by
 
         kubectl get pods -w -n kube-system
 
-1. Go to `examples/` directory and follow [the instructions](https://github.com/Equinix/virtlet/tree/master/examples) from there.
+1. Go to `examples/` directory and follow [the instructions](https://github.com/Equinix-Metal/virtlet/tree/master/examples) from there.
 
 ## Configuring Virtlet
 

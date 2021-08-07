@@ -24,7 +24,7 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/Equinix/virtlet/tests/gm"
+	"github.com/Equinix-Metal/virtlet/tests/gm"
 )
 
 func TestGenDocCommand(t *testing.T) {

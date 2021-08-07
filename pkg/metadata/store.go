@@ -23,8 +23,8 @@ import (
 
 	"github.com/jonboulle/clockwork"
 
-	"github.com/Equinix/virtlet/pkg/metadata/types"
-	"github.com/Equinix/virtlet/pkg/network"
+	"github.com/Equinix-Metal/virtlet/pkg/metadata/types"
+	"github.com/Equinix-Metal/virtlet/pkg/network"
 )
 
 // PodSandboxMetadata contains methods of a single Pod sandbox

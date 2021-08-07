@@ -30,8 +30,8 @@ import (
 	"github.com/golang/glog"
 	digest "github.com/opencontainers/go-digest"
 
-	"github.com/Equinix/virtlet/pkg/fs"
-	"github.com/Equinix/virtlet/pkg/metadata/types"
+	"github.com/Equinix-Metal/virtlet/pkg/fs"
+	"github.com/Equinix-Metal/virtlet/pkg/metadata/types"
 )
 
 // Image describes an image.

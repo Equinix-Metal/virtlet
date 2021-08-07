@@ -1,4 +1,4 @@
-module github.com/Equinix/virtlet
+module github.com/Equinix-Metal/virtlet
 
 go 1.16
 

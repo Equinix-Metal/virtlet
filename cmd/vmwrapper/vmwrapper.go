@@ -25,12 +25,12 @@ import (
 
 	"github.com/golang/glog"
 
-	"github.com/Equinix/virtlet/pkg/config"
-	"github.com/Equinix/virtlet/pkg/network"
-	"github.com/Equinix/virtlet/pkg/nsfix"
-	"github.com/Equinix/virtlet/pkg/tapmanager"
-	"github.com/Equinix/virtlet/pkg/utils"
-	"github.com/Equinix/virtlet/pkg/utils/cgroups"
+	"github.com/Equinix-Metal/virtlet/pkg/config"
+	"github.com/Equinix-Metal/virtlet/pkg/network"
+	"github.com/Equinix-Metal/virtlet/pkg/nsfix"
+	"github.com/Equinix-Metal/virtlet/pkg/tapmanager"
+	"github.com/Equinix-Metal/virtlet/pkg/utils"
+	"github.com/Equinix-Metal/virtlet/pkg/utils/cgroups"
 )
 
 const (

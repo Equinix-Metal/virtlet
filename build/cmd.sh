@@ -22,7 +22,7 @@ MKDOCS_SERVE_ADDRESS="${MKDOCS_SERVE_ADDRESS:-localhost:8042}"
 # Note that project_dir must not end with slash
 project_dir="$(cd "$(dirname "${BASH_SOURCE}")/.." && pwd)"
 virtlet_image="${VIRTLET_IMAGE_REPO}/virtlet"
-remote_project_dir="/go/src/github.com/Equinix/virtlet"
+remote_project_dir="/go/src/github.com/Equinix-Metal/virtlet"
 build_name="virtlet-build"
 tmp_container_name="${build_name}-$(openssl rand -hex 16)"
 build_image="${VIRTLET_IMAGE_REPO}/${build_name}:latest"
@@ -51,7 +51,7 @@ bindata_out="pkg/tools/bindata.go"
 bindata_dir="deploy/data"
 bindata_pkg="tools"
 ldflags=()
-go_package=github.com/Equinix/virtlet
+go_package=github.com/Equinix-Metal/virtlet
 
 function image_tags_filter {
     local tag="${1}"
@@ -546,7 +546,7 @@ function update_generated_docs_internal {
 function update_generated_internal {
   install_vendor_internal
   vendor/k8s.io/code-generator/generate-groups.sh all \
-    github.com/Equinix/virtlet/pkg/client github.com/Equinix/virtlet/pkg/api \
+    github.com/Equinix-Metal/virtlet/pkg/client github.com/Equinix-Metal/virtlet/pkg/api \
     virtlet.k8s:v1 \
     --go-header-file "build/custom-boilerplate.go.txt"
   # fix import url case issues

@@ -25,7 +25,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/Equinix/virtlet/pkg/version"
+	"github.com/Equinix-Metal/virtlet/pkg/version"
 	"github.com/spf13/cobra"
 )
 

@@ -1,4 +1,4 @@
-# virtlet [![CircleCI](https://circleci.com/gh/Equinix/virtlet/tree/master.svg?style=svg)](https://circleci.com/gh/Equinix/virtlet/tree/master) [![Maintainability](https://api.codeclimate.com/v1/badges/7e40b1e1d7cd78c86a50/maintainability)](https://codeclimate.com/github/Equinix/virtlet/maintainability) [![Go Report Card](https://goreportcard.com/badge/github.com/Equinix/virtlet)](https://goreportcard.com/report/github.com/Equinix/virtlet)
+# virtlet [![CircleCI](https://circleci.com/gh/Equinix/virtlet/tree/master.svg?style=svg)](https://circleci.com/gh/Equinix/virtlet/tree/master) [![Maintainability](https://api.codeclimate.com/v1/badges/7e40b1e1d7cd78c86a50/maintainability)](https://codeclimate.com/github/Equinix/virtlet/maintainability) [![Go Report Card](https://goreportcard.com/badge/github.com/Equinix-Metal/virtlet)](https://goreportcard.com/report/github.com/Equinix-Metal/virtlet)
 
 Virtlet is a Kubernetes runtime server which allows you to run VM workloads, based on QCOW2 images.
 
@@ -29,7 +29,7 @@ You can watch and listen to Virtlet demo video that was recorded on Kubernetes C
 ### Command line interface
 
 Virtlet comes with a helper tool,
-[virtletctl](https://docs.virtlet.cloud/reference/virtletctl/), that helps managing the VM pods. The binaries are available for Linux and Mac OS X in the [Releases](https://github.com/Equinix/virtlet/releases) section.
+[virtletctl](https://docs.virtlet.cloud/reference/virtletctl/), that helps managing the VM pods. The binaries are available for Linux and Mac OS X in the [Releases](https://github.com/Equinix-Metal/virtlet/releases) section.
 You can also install virtletctl as a kubectl plugin:
 ```
 virtletctl install
@@ -86,7 +86,7 @@ Virtlet has no problems handling them on Kubernetes as demonstrated in this
 
 ## Need any help with Virtlet?
 
-If you will encounter any issue when using Virtlet please look into our [issue tracker](http://github.com/Equinix/virtlet/issues) on github. If your case is not mentioned there - please fill new issue for it. In case of any questions you may also use [#virtlet](https://kubernetes.slack.com/messages/virtlet/) channel on
+If you will encounter any issue when using Virtlet please look into our [issue tracker](http://github.com/Equinix-Metal/virtlet/issues) on github. If your case is not mentioned there - please fill new issue for it. In case of any questions you may also use [#virtlet](https://kubernetes.slack.com/messages/virtlet/) channel on
 [Kubernetes Slack](https://kubernetes.slack.com/messages).
 
 ## Contributing

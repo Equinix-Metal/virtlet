@@ -38,7 +38,7 @@ if [[ $# > 0 ]]; then
 fi
 
 # The directory that gets sync'd
-VOLUME=/go/src/github.com/Equinix/virtlet
+VOLUME=/go/src/github.com/Equinix-Metal/virtlet
 
 CONFDIR="/tmp/rsync.virtlet"
 PIDFILE="${CONFDIR}/rsyncd.pid"

@@ -25,7 +25,7 @@ import (
 	"strings"
 	"testing"
 
-	testutils "github.com/Equinix/virtlet/pkg/utils/testing"
+	testutils "github.com/Equinix-Metal/virtlet/pkg/utils/testing"
 )
 
 const sampleMountInfo = `28 0 252:1 / / rw,relatime shared:1 - ext4 /dev/vda1 rw,data=ordered

@@ -50,8 +50,8 @@ import (
 	"github.com/golang/glog"
 	"github.com/vishvananda/netlink"
 
-	"github.com/Equinix/virtlet/pkg/cni"
-	"github.com/Equinix/virtlet/pkg/network"
+	"github.com/Equinix-Metal/virtlet/pkg/cni"
+	"github.com/Equinix-Metal/virtlet/pkg/network"
 )
 
 const (

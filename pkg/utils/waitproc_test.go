@@ -24,7 +24,7 @@ import (
 	"runtime"
 	"testing"
 
-	testutils "github.com/Equinix/virtlet/pkg/utils/testing"
+	testutils "github.com/Equinix-Metal/virtlet/pkg/utils/testing"
 )
 
 func verifyWaitProc(t *testing.T, tmpDir string) {

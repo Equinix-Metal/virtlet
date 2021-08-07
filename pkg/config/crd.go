@@ -21,7 +21,7 @@ import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime"
 
-	virtlet_v1 "github.com/Equinix/virtlet/pkg/api/virtlet.k8s/v1"
+	virtlet_v1 "github.com/Equinix-Metal/virtlet/pkg/api/virtlet.k8s/v1"
 )
 
 func configMappingProps() *apiext.JSONSchemaProps {

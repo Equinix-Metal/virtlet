@@ -28,8 +28,8 @@ import (
 	"github.com/spf13/cobra"
 	v1 "k8s.io/api/core/v1"
 
-	"github.com/Equinix/virtlet/pkg/diag"
-	"github.com/Equinix/virtlet/pkg/version"
+	"github.com/Equinix-Metal/virtlet/pkg/diag"
+	"github.com/Equinix-Metal/virtlet/pkg/version"
 )
 
 const (

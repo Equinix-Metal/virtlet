@@ -23,11 +23,11 @@ import (
 
 	libvirtxml "github.com/libvirt/libvirt-go-xml"
 
-	"github.com/Equinix/virtlet/pkg/metadata/types"
-	fakeutils "github.com/Equinix/virtlet/pkg/utils/fake"
-	testutils "github.com/Equinix/virtlet/pkg/utils/testing"
-	"github.com/Equinix/virtlet/pkg/virt/fake"
-	"github.com/Equinix/virtlet/tests/gm"
+	"github.com/Equinix-Metal/virtlet/pkg/metadata/types"
+	fakeutils "github.com/Equinix-Metal/virtlet/pkg/utils/fake"
+	testutils "github.com/Equinix-Metal/virtlet/pkg/utils/testing"
+	"github.com/Equinix-Metal/virtlet/pkg/virt/fake"
+	"github.com/Equinix-Metal/virtlet/tests/gm"
 )
 
 const (

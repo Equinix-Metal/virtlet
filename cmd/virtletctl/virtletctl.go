@@ -23,7 +23,7 @@ import (
 	"github.com/lithammer/dedent"
 	"github.com/spf13/cobra"
 
-	"github.com/Equinix/virtlet/pkg/tools"
+	"github.com/Equinix-Metal/virtlet/pkg/tools"
 )
 
 func newRootCmd() *cobra.Command {

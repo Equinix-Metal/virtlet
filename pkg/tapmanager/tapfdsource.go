@@ -31,11 +31,11 @@ import (
 	"github.com/golang/glog"
 	"github.com/vishvananda/netlink"
 
-	"github.com/Equinix/virtlet/pkg/cni"
-	"github.com/Equinix/virtlet/pkg/dhcp"
-	"github.com/Equinix/virtlet/pkg/nettools"
-	"github.com/Equinix/virtlet/pkg/network"
-	"github.com/Equinix/virtlet/pkg/utils"
+	"github.com/Equinix-Metal/virtlet/pkg/cni"
+	"github.com/Equinix-Metal/virtlet/pkg/dhcp"
+	"github.com/Equinix-Metal/virtlet/pkg/nettools"
+	"github.com/Equinix-Metal/virtlet/pkg/network"
+	"github.com/Equinix-Metal/virtlet/pkg/utils"
 )
 
 const (

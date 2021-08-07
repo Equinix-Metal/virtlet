@@ -21,10 +21,10 @@ package v1
 import (
 	time "time"
 
-	virtlet_k8s_v1 "github.com/Equinix/virtlet/pkg/api/virtlet.k8s/v1"
-	versioned "github.com/Equinix/virtlet/pkg/client/clientset/versioned"
-	internalinterfaces "github.com/Equinix/virtlet/pkg/client/informers/externalversions/internalinterfaces"
-	v1 "github.com/Equinix/virtlet/pkg/client/listers/virtlet.k8s/v1"
+	virtlet_k8s_v1 "github.com/Equinix-Metal/virtlet/pkg/api/virtlet.k8s/v1"
+	versioned "github.com/Equinix-Metal/virtlet/pkg/client/clientset/versioned"
+	internalinterfaces "github.com/Equinix-Metal/virtlet/pkg/client/informers/externalversions/internalinterfaces"
+	v1 "github.com/Equinix-Metal/virtlet/pkg/client/listers/virtlet.k8s/v1"
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	runtime "k8s.io/apimachinery/pkg/runtime"
 	watch "k8s.io/apimachinery/pkg/watch"

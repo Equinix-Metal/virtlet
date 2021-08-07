@@ -20,8 +20,8 @@ import (
 	"bytes"
 	"testing"
 
-	"github.com/Equinix/virtlet/pkg/version"
-	"github.com/Equinix/virtlet/tests/gm"
+	"github.com/Equinix-Metal/virtlet/pkg/version"
+	"github.com/Equinix-Metal/virtlet/tests/gm"
 	"strings"
 )
 

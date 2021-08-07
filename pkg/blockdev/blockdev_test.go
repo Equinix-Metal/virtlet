@@ -23,10 +23,10 @@ import (
 	"reflect"
 	"testing"
 
-	fake "github.com/Equinix/virtlet/pkg/blockdev/fake"
-	"github.com/Equinix/virtlet/pkg/utils"
-	fakeutils "github.com/Equinix/virtlet/pkg/utils/fake"
-	testutils "github.com/Equinix/virtlet/pkg/utils/testing"
+	fake "github.com/Equinix-Metal/virtlet/pkg/blockdev/fake"
+	"github.com/Equinix-Metal/virtlet/pkg/utils"
+	fakeutils "github.com/Equinix-Metal/virtlet/pkg/utils/fake"
+	testutils "github.com/Equinix-Metal/virtlet/pkg/utils/testing"
 )
 
 func TestDevHeader(t *testing.T) {

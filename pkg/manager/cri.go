@@ -23,8 +23,8 @@ import (
 
 	kubeapi "k8s.io/kubernetes/pkg/kubelet/apis/cri/runtime/v1alpha2"
 
-	"github.com/Equinix/virtlet/pkg/metadata/types"
-	"github.com/Equinix/virtlet/pkg/network"
+	"github.com/Equinix-Metal/virtlet/pkg/metadata/types"
+	"github.com/Equinix-Metal/virtlet/pkg/network"
 )
 
 func podSandboxMetadata(in *types.PodSandboxInfo) *kubeapi.PodSandboxMetadata {

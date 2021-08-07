@@ -19,8 +19,8 @@ package e2e
 import (
 	. "github.com/onsi/gomega"
 
-	"github.com/Equinix/virtlet/tests/e2e/framework"
-	. "github.com/Equinix/virtlet/tests/e2e/ginkgo-ext"
+	"github.com/Equinix-Metal/virtlet/tests/e2e/framework"
+	. "github.com/Equinix-Metal/virtlet/tests/e2e/ginkgo-ext"
 )
 
 var _ = Describe("Block PVs", func() {

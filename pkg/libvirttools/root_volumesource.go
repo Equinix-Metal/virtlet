@@ -21,8 +21,8 @@ import (
 
 	libvirtxml "github.com/libvirt/libvirt-go-xml"
 
-	"github.com/Equinix/virtlet/pkg/metadata/types"
-	"github.com/Equinix/virtlet/pkg/virt"
+	"github.com/Equinix-Metal/virtlet/pkg/metadata/types"
+	"github.com/Equinix-Metal/virtlet/pkg/virt"
 )
 
 // rootVolume denotes the root disk of the VM

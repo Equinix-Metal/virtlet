@@ -27,7 +27,7 @@ import (
 
 	"github.com/davecgh/go-spew/spew"
 
-	testutils "github.com/Equinix/virtlet/pkg/utils/testing"
+	testutils "github.com/Equinix-Metal/virtlet/pkg/utils/testing"
 )
 
 type diagTester struct {

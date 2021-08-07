@@ -19,8 +19,8 @@ limitations under the License.
 package v1
 
 import (
-	v1 "github.com/Equinix/virtlet/pkg/api/virtlet.k8s/v1"
-	scheme "github.com/Equinix/virtlet/pkg/client/clientset/versioned/scheme"
+	v1 "github.com/Equinix-Metal/virtlet/pkg/api/virtlet.k8s/v1"
+	scheme "github.com/Equinix-Metal/virtlet/pkg/client/clientset/versioned/scheme"
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	types "k8s.io/apimachinery/pkg/types"
 	watch "k8s.io/apimachinery/pkg/watch"

@@ -26,9 +26,9 @@ import (
 
 	"github.com/davecgh/go-spew/spew"
 
-	"github.com/Equinix/virtlet/pkg/diag"
-	testutils "github.com/Equinix/virtlet/pkg/utils/testing"
-	"github.com/Equinix/virtlet/tests/gm"
+	"github.com/Equinix-Metal/virtlet/pkg/diag"
+	testutils "github.com/Equinix-Metal/virtlet/pkg/utils/testing"
+	"github.com/Equinix-Metal/virtlet/tests/gm"
 )
 
 var (

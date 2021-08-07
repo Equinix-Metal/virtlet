@@ -26,8 +26,8 @@ import (
 	digest "github.com/opencontainers/go-digest"
 	"golang.org/x/sys/unix"
 
-	"github.com/Equinix/virtlet/pkg/blockdev"
-	"github.com/Equinix/virtlet/pkg/metadata/types"
+	"github.com/Equinix-Metal/virtlet/pkg/blockdev"
+	"github.com/Equinix-Metal/virtlet/pkg/metadata/types"
 )
 
 // persistentRootVolume represents a root volume that can survive the
