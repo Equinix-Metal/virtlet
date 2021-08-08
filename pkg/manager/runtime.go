@@ -26,7 +26,7 @@ import (
 	"github.com/golang/glog"
 	"github.com/jonboulle/clockwork"
 	"golang.org/x/net/context"
-	kubeapi "k8s.io/kubelet/apis/cri/runtime/v1alpha2"
+	kubeapi "k8s.io/cri-api/pkg/apis/runtime/v1alpha2"
 
 	"equinix.com/vpe/virtlet/pkg/cni"
 	"equinix.com/vpe/virtlet/pkg/libvirttools"

@@ -50,7 +50,15 @@ replace equinix.com/vpe/version => ./pkg/version
 
 replace equinix.com/vpe/virt => ./pkg/virt
 
+replace k8s.io/client-go => k8s.io/client-go v0.20.4
+
+replace k8s.io/apimachinery => k8s.io/apimachinery v0.19.0
+
 require (
 	github.com/Equinix-Metal/virtlet v1.5.2-0.20210807010419-342346535dc5 // indirect
 	k8s.io/api v0.22.0 // indirect
+	//k8s.io/apimachinery v0.22.0
+	//k8s.io/client-go v0.20.4
+	k8s.io/cri-api v0.22.0 // indirect
+	k8s.io/client-go v0.20.4 // indirect
 )

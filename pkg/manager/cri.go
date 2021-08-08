@@ -21,7 +21,7 @@ import (
 	"fmt"
 	"path/filepath"
 
-	kubeapi "k8s.io/kubelet/apis/cri/runtime/v1alpha2"
+	kubeapi "k8s.io/cri-api/pkg/apis/runtime/v1alpha2"
 
 	"equinix.com/vpe/virtlet/pkg/metadata/types"
 	"equinix.com/vpe/virtlet/pkg/network"

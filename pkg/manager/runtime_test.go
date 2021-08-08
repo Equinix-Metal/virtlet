@@ -34,7 +34,7 @@ import (
 	cnicurrent "github.com/containernetworking/cni/pkg/types/current"
 	"github.com/davecgh/go-spew/spew"
 	"github.com/jonboulle/clockwork"
-	kubeapi "k8s.io/kubelet/apis/cri/runtime/v1alpha2"
+	kubeapi "k8s.io/cri-api/pkg/apis/runtime/v1alpha2"
 
 	"equinix.com/vpe/virtlet/pkg/cni"
 	"equinix.com/vpe/virtlet/pkg/flexvolume"
