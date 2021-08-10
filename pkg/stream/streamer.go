@@ -30,7 +30,6 @@ import (
 	"k8s.io/client-go/tools/remotecommand"
 
 	kubeapi "k8s.io/cri-api/pkg/apis/runtime/v1alpha2"
-	kubecontainer "k8s.io/kubelet/container"
 )
 
 // GetAttach returns attach stream request
@@ -54,10 +53,6 @@ func (s *Server) Attach(containerID string, inputStream io.Reader, outputStream,
 
 	outChan := make(chan []byte)
 	s.unixServer.AddOutputReader(containerID, outChan)
-
-	kubecontainer.HandleResizing(resize, func(size remotecommand.TerminalSize) {
-		glog.Infof("Got a resize event: %+v", size)
-	})
 
 	receiveStdout := make(chan error)
 	if outputStream != nil {
